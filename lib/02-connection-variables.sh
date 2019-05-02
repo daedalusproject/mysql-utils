@@ -10,6 +10,8 @@
 #       CREATED: 01/05/2019 19:05
 #===============================================================================
 
+source lib/01-messages.sh
+
 function declare_connection_variables {
 
     declare -A connection_options_hash=(

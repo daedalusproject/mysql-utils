@@ -12,8 +12,8 @@ all: build
 
 test:
 	@echo "executing $(PROG) unit tests"
-	@echo "- debug"
-	( $(TEST_DIR)/01-test_debug.sh )
+	@echo "- messages"
+	( $(TEST_DIR)/01-test_messages.sh )
 	@echo "- connection variables"
 	( $(TEST_DIR)/02-test_connection-variables.sh )
 

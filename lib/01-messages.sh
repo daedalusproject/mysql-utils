@@ -1,9 +1,9 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 01-debug.sh
+#          FILE: 01-messages.sh
 #
-#   DESCRIPTION: Debug functions
+#   DESCRIPTION: Debug and error messages
 
 #        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
 #  ORGANIZATION: Daedalus Project
@@ -16,4 +16,10 @@ function debug {
     if [ -n "$DEBUG" ]; then
         echo "$@"
     fi
+}
+
+
+function report_error {
+    error_message="Error: $@"
+    echo "$error_message" 1>&2
 }

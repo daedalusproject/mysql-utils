@@ -10,7 +10,7 @@
 #       CREATED: 05/01/2019 18:46
 #===============================================================================
 
-source lib/01-debug.sh
+source lib/01-messages.sh
 
 TearDown() {
     unset DEBUG
