@@ -14,12 +14,12 @@
 function debug {
 
     if [ -n "$DEBUG" ]; then
-        echo "$@"
+        echo "$*"
     fi
 }
 
 
 function report_error {
-    error_message="Error: $@"
+    error_message="Error: $*"
     echo "$error_message" 1>&2
 }

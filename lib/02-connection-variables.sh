@@ -23,8 +23,8 @@ function declare_connection_variables {
     ["r"]="connection-retries"
     ["t"]="connection-timeout"
     )
-
-    connection_options=$( echo "${!connection_options_hash[@]}" | sed 's/ //g' )
+    connection_options="${!connection_options_hash[*]}"
+    connection_options=${connection_options// /}
     connection_options_OR=$( echo "${!connection_options_hash[@]}" | sed 's/\([^ ]\)/-\1 |/g' | sed 's/|$//g' | sed 's/[ ]*$//g' )
 
     long_connection_options=""
@@ -32,12 +32,12 @@ function declare_connection_variables {
     do
         long_connection_options="$long_connection_options,${connection_options_hash[$option]}"
     done
-    long_connection_options=$(echo "$long_connection_options" | sed 's/^,//g')
+    long_connection_options=${long_connection_options/,/}
     long_connection_options_OR=$( echo "--$long_connection_options" | sed 's/,/| --/g' )
 }
 
 function get_connection_variables {
-    OPTS=`getopt -o $connection_options --long $long_connection_options -n 'connection-options' -- "$@" 2> $LOCAL_ERROR_FILE `
+    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options" -n 'connection-options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 
     getopt_status=$?
 
