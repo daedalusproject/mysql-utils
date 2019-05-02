@@ -31,7 +31,7 @@ function set_short_mysql_variables {
 }
 
 function set_mysql_variables {
-    variable_name=$(echo "$1" | sed 's/^-*//')
+    variable_name=${1//--/}
     variable_name=$( echo "MYSQL_$variable_name" | tr '[:lower:]' '[:upper:]' | tr '-' '_' )
     variable_value=$2
 
@@ -70,7 +70,7 @@ function get_connection_variables {
 
     while true; do
         eval "
-        case "$1" in
+        case $1 in
             $connection_options_OR )
                 set_short_mysql_variables $1 $2
                 shift ; shift;;
