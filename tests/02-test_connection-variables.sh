@@ -76,5 +76,14 @@ testLongValidOption(){
     assertEquals "" "$valid_long_variable_status"
     assertEquals "root" "$MYSQL_USER"
 }
+
+testLongValidOption2(){
+    declare_connection_variables
+    get_connection_variables --connection-retries=2
+    valid_long_variables_status=$?
+    assertEquals "" "$valid_long_variable_status"
+    assertEquals "2" "$MYSQL_CONNECTION_RETRIES"
+}
+#
 # Load shUnit2.
 . /usr/bin/shunit2
