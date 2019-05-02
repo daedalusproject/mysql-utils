@@ -40,9 +40,9 @@ tearDown() {
 
 testDeclaredconnectionOptions() {
     declare_connection_variables
-    assertEquals "PShprtu" "$connection_options"
+    assertEquals "P:S:h:p:r:t:u:" "$connection_options"
     assertEquals "-P | -S | -h | -p | -r | -t | -u" "$connection_options_OR"
-    assertEquals "port,socket,host,password,connection-retries,connection-timeout,user" "$long_connection_options"
+    assertEquals "port:,socket:,host:,password:,connection-retries:,connection-timeout:,user:" "$long_connection_options"
     assertEquals "--port| --socket| --host| --password| --connection-retries| --connection-timeout| --user" "$long_connection_options_OR"
 }
 
@@ -61,6 +61,20 @@ testInvalidOption(){
     assertEquals "1" "$empty_variables_status"
 }
 
+testValidOption(){
+    declare_connection_variables
+    get_connection_variables -u "root"
+    valid_variable_error=$?
+    assertEquals "0" "$valid_variable_error"
+    assertEquals "root" "$MYSQL_USER"
+}
 
+testLongValidOption(){
+    declare_connection_variables
+    get_connection_variables --user="root"
+    valid_long_variables_status=$?
+    assertEquals "" "$valid_long_variable_status"
+    assertEquals "root" "$MYSQL_USER"
+}
 # Load shUnit2.
 . /usr/bin/shunit2
