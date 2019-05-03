@@ -57,3 +57,4 @@ function check_connection_variables {
         exit 1
     fi
 }
+
