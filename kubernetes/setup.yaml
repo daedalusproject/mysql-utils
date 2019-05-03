@@ -13,7 +13,7 @@ metadata:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: gitlab-daedalus-project-deployer
+  name: gitlab-mysql-test-runner
   namespace: mysql-test
 rules:
 - apiGroups: ["", "extensions", "apps"]
