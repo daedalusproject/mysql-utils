@@ -166,6 +166,8 @@ testTestConnectionSuccess() {
 
     MYSQL_USER="root"
     MYSQL_PASSWORD="letmein"
+    MYSQL_PORT=3306
+    MYSQL_HOST="percona-server"
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
