@@ -43,12 +43,12 @@ function create_kube_config {
 
 function delete_configs {
 
-    kubectl -n mysql-tst  delete -f kubernetes/services/database.yaml --ignore-not-found=true
+    kubectl -n mysql-test  delete -f kubernetes/services/database.yaml --ignore-not-found=true
 }
 
 function create_configs {
 
-    kubectl -n mysql-tst  apply -f kubernetes/services/database.yaml --ignore-not-found=true
+    kubectl -n mysql-test  apply -f kubernetes/services/database.yaml --ignore-not-found=true
 }
 
 ## Main
