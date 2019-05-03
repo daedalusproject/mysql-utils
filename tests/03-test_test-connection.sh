@@ -68,7 +68,7 @@ testDefaultValues() {
 
     # Daefault values
     assertEquals "localhost" "$MYSQL_HOST"
-    assertEquals "3306" "$MYSQL_PORT"
+    assertEquals "" "$MYSQL_PORT"
     assertEquals "/var/run/mysqld/mysqld.sock" "$MYSQL_SOCKET"
     assertEquals "5" "$MYSQL_CONNECTION_RETRIES"
     assertEquals "10" "$MYSQL_CONNECTION_TIMEOUT"
