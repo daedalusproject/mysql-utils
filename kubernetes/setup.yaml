@@ -5,19 +5,6 @@ metadata:
   name: mysql-test
 ---
 apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: mem-cpu-quota
-  namespace: mysql-test
-spec:
-  hard:
-    requests.cpu: "200m"
-    requests.memory: 200Mi
-    limits.cpu: "200m"
-    limits.memory: 200Mi
-    pods: "3"
----
-apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: gitlab-mysql-test-runner
