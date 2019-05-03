@@ -6,8 +6,6 @@
 
 ## Variables
 
-KUBERNETES_CONFIG_FOLDER="kubernetes"
-KUBE_CLUSTER_CRT="$KUBERNETES_CONFIG_FOLDER/windmaker.pem"
 ## Functions
 
 function show_error {
@@ -35,19 +33,19 @@ function check_required_environment_variables {
 
 function create_kube_config {
 
-    kubectl config set-cluster default --server=$KUBERNETES_URL --certificate-authority=$KUBERNETES_CLUSTER_CRT
-    kubectl config set-credentials $KUBERNETES_USER_NAME --token=$KUBERNETES_USER_TOKEN
-    kubectl config set-context default --cluster=default --user=$KUBERNETES_USER_NAME
+    kubectl config set-cluster default --server=$KUBERNETES_URL --certificate-authority=kubernetes/windmaker.pem
+    kubectl config set-credentials "$KUBERNETES_USER_NAME" --token="$KUBERNETES_USER_TOKEN"
+    kubectl config set-context default --cluster=default --user="$KUBERNETES_USER_NAME"
     kubectl config use-context default
 }
 
 function delete_configs {
-    kubectl -n mysql-test delete -f ./kubernetes/services/database.yaml --ignore-not-found=true
+    kubectl -n mysql-test delete -f kubernetes/services/database.yaml --ignore-not-found=true
 }
 
 function create_configs {
 
-    kubectl -n mysql-test apply -f ./kubernetes/services/database.yaml
+    kubectl -n mysql-test apply -f kubernetes/services/database.yaml
 }
 
 ## Main
