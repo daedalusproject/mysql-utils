@@ -21,6 +21,7 @@ deploy_databse:
         - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
         - source utils/create_environment.sh
         - create_kube_config
+        - kubectl -n mysql-test delete -f ./kubernetes/services/database.yaml --ignore-not-found=true
         - delete_configs
         - create_configs
 
