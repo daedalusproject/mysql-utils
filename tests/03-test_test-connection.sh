@@ -41,19 +41,30 @@ tearDown() {
 
 testNotAnyVariableSet() {
 
-
-   cat << EOF > $TMP_FOLDER/notanyvariables
-MYSQL_PASSWORD is required.
-MYSQL_USER is required.
+    cat << EOF > $TMP_FOLDER/notanyvariables
+Error: MYSQL_USER is required.
+Error: MYSQL_PASSWORD is required.
 EOF
 
-    check_connection_variables 2> $TMP_FOLDER/notanyvariables_test
-    notanyvariables_errors=$?
 
-    diff $TMP_FOLDER/notanyvariables $TMP_FOLDER/notanyvariables_test > /dev/null
-    error_message_diff=$?
-    assertEquals "1" "$notanyvariables_errors"
-    assertEquals "0" "$error_message_diff"
+notanyvariables=$(check_connection_variables 2> $TMP_FOLDER/notanyvariables_test)
+notanyvariables_errors=$?
+
+diff $TMP_FOLDER/notanyvariables $TMP_FOLDER/notanyvariables_test > /dev/null
+error_message_diff=$?
+assertEquals "1" "$notanyvariables_errors"
+assertEquals "0" "$error_message_diff"
+}
+
+testdefaultValues() {
+
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="password"
+
+    check_connection_variables
+    all_variables_errors=$?
+
+    assertEquals "0" "$all_variables_errors"
 
     # Daefault values
     assertEquals "localhost" "$MYSQL_HOST"
@@ -61,7 +72,12 @@ EOF
     assertEquals "/var/run/mysqld/mysqld.sock" "$MYSQL_SOCKET"
     assertEquals "5" "$MYSQL_CONNECTION_RETRIES"
     assertEquals "10" "$MYSQL_CONNECTION_TIMEOUT"
+
+    # Set values
+    assertEquals "root" "$MYSQL_USER"
+    assertEquals "password" "$MYSQL_PASSWORD"
 }
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2
