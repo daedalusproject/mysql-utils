@@ -1,29 +1,49 @@
 stages:
+    - linter
+    - set_test_environment
     - test
+    - set_coverage_environment
     - coverage
     - package
     - update_repo
 
 linter:
-    image: daedalusproject/base_bash_utils:201904300501
-    stage: test
+    image: daedalusproject/base_bash_utils:201905011523
+    stage: linter
     script:
         - shellcheck lib/*.sh
 
+deploy_databse:
+    image: daedalusproject/base_kubectl:201905011523
+    stage: set_test_environment
+    script:
+        - declare -a -g REQUIRED_VARIABLES
+        - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
+        - source utils/create_environment.sh
+        - create_kube_config
+        - delete_configs
+        - create_configs
+
 unit_tests:
-    image: daedalusproject/base_bash_utils:201904300501
+    image: daedalusproject/base_bash_utils:201905011523
     stage: test
-    before_script:
-        - sudo apt-get update
-        - echo percona-server-server  percona-server-server/root-pass password letmein | debconf-set-selections
-        - echo percona-server-server  percona-server-server/re-root-pass password letmein | debconf-set-selections
-        - echo percona-server-server  percona-server-server/default-auth-override select 1 | debconf-set-selections
-        - apt-get install -y percona-server-server
     script:
         - make test
 
+deploy_databse_for_coverage:
+    image: daedalusproject/base_kubectl:201905011523
+    stage: set_coverage_environment
+    script:
+        - declare -a -g REQUIRED_VARIABLES
+        - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
+        - source utils/create_environment.sh
+        - create_kube_config
+        - delete_configs
+        - create_configs
+
+
 cover:
-    image: daedalusproject/base_bash_utils:201904300501
+    image: daedalusproject/base_bash_utils:201905011523
     stage: coverage
     script:
         - make cover
