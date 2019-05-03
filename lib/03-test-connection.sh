@@ -70,14 +70,14 @@ function test_connection {
         fi
 
         connection_error=1
-        for retries in $(seq 1 $MYSQL_CONNECTION_RETRIES)
+        for retry  in $(seq 1 "$MYSQL_CONNECTION_RETRIES")
         do
-            mysql $CONECTION_STRING -Bse "SELECT 1" 2> /dev/null && connection_error=0 && break
-            sleep $MYSQL_CONNECTION_TIMEOUT
+            mysql "$CONECTION_STRING" -Bse "SELECT 1" 2> /dev/null && connection_error=0 && break
+            sleep "$MYSQL_CONNECTION_TIMEOUT"
         done
 
         if [[ $connection_error == 1 ]]; then
-            report_error "Failed to connect."
+            report_error "Failed to connect after $retry retries."
             exit 1;
         fi
 }
