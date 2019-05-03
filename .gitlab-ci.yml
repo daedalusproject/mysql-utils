@@ -9,7 +9,7 @@ stages:
 
 linter:
     image: daedalusproject/base_bash_utils:201905011523
-    stage: test
+    stage: linter
     script:
         - shellcheck lib/*.sh
 
