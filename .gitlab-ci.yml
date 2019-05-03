@@ -20,6 +20,7 @@ deploy_databse:
         - declare -a -g REQUIRED_VARIABLES
         - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
         - source utils/create_environment.sh
+        - create_kube_config
         - delete_configs
         - create_configs
 
@@ -36,6 +37,7 @@ deploy_databse_for_coverage:
         - declare -a -g REQUIRED_VARIABLES
         - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
         - source utils/create_environment.sh
+        - create_kube_config
         - delete_configs
         - create_configs
 
