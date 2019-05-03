@@ -56,7 +56,7 @@ assertEquals "1" "$notanyvariables_errors"
 assertEquals "0" "$error_message_diff"
 }
 
-testdefaultValues() {
+testDefaultValues() {
 
     MYSQL_USER="root"
     MYSQL_PASSWORD="password"
@@ -77,6 +77,34 @@ testdefaultValues() {
     assertEquals "root" "$MYSQL_USER"
     assertEquals "password" "$MYSQL_PASSWORD"
 }
+
+testChangeDefaultValues() {
+
+    MYSQL_USER="roi000ot"
+    MYSQL_PASSWORD="pAssw0rd"
+    MYSQL_HOST="somerandomhost"
+    MYSQL_PORT=3421
+    MYSQL_SOCKET="/var/run/some/test.sock"
+    MYSQL_CONNECTION_RETRIES=12
+    MYSQL_CONNECTION_TIMEOUT=100
+
+    check_connection_variables
+    all_variables_errors=$?
+
+    assertEquals "0" "$all_variables_errors"
+
+    # Daefault values
+    assertEquals "somerandomhost" "$MYSQL_HOST"
+    assertEquals "3421" "$MYSQL_PORT"
+    assertEquals "/var/run/some/test.sock" "$MYSQL_SOCKET"
+    assertEquals "12" "$MYSQL_CONNECTION_RETRIES"
+    assertEquals "100" "$MYSQL_CONNECTION_TIMEOUT"
+
+    # Set values
+    assertEquals "roi000ot" "$MYSQL_USER"
+    assertEquals "pAssw0rd" "$MYSQL_PASSWORD"
+}
+
 
 #
 # Load shUnit2.
