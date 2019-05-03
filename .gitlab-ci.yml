@@ -14,7 +14,7 @@ unit_tests:
     image: daedalusproject/base_bash_utils:201904300501
     stage: test
     before_script:
-        - apt-get update
+        - sudo apt-get update
         - echo percona-server-server  percona-server-server/root-pass password letmein | debconf-set-selections
         - echo percona-server-server  percona-server-server/re-root-pass password letmein | debconf-set-selections
         - echo percona-server-server  percona-server-server/default-auth-override select 1 | debconf-set-selections
