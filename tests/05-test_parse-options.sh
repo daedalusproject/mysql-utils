@@ -72,8 +72,6 @@ testChangeRootPasswordOptions() {
     parse_change_root_password_options --new-root-password="test"
 
     assertEquals "--new-root-password| --new-root-host" "$change_root_password_options_OR"
-    assertEquals "test" "$MYSQL_NEW_ROOT_PASSWORD"
-    assertEquals "host" "$MYSQL_NEW_ROOT_HOST"
 }
 
 #
