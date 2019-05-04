@@ -1,9 +1,9 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 02-connection-variables.sh
+#          FILE: 02-variables.sh
 #
-#   DESCRIPTION: Manage connection variables
+#   DESCRIPTION: Manage variables
 
 #        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
 #  ORGANIZATION: Daedalus Project
@@ -35,7 +35,6 @@ function set_mysql_variables {
     variable_name=$( echo "MYSQL_$variable_name" | tr '[:lower:]' '[:upper:]' | tr '-' '_' )
     variable_value=$2
 
-    echo "$variable_name=$variable_value"
     eval "$variable_name=$variable_value"
 }
 
@@ -55,7 +54,7 @@ function declare_connection_variables {
     long_connection_options="${long_connection_options//,/:,}:"
 }
 
-function get_connection_variables {
+function get_variables {
     OPTS=$(getopt -o "$connection_options" --long "$long_connection_options" -n 'connection-options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 
     getopt_status=$?

@@ -10,7 +10,7 @@
 #       CREATED: 05/05/2019 19:03
 #===============================================================================
 
-source lib/02-connection-variables.sh
+source lib/02-variables.sh
 source lib/03-test-connection.sh
 
 oneTimeSetUp() {
