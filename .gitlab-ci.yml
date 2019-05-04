@@ -29,7 +29,7 @@ unit_tests:
     stage: test
     before_script:
         - sudo apt-get update
-        - sudo apt-get install percona-server-client
+        - sudo apt-get install -y percona-server-client
     script:
         - make test
 
@@ -48,6 +48,9 @@ deploy_databse_for_coverage:
 cover:
     image: daedalusproject/base_bash_utils:201905011523
     stage: coverage
+   before_script:
+        - sudo apt-get update
+        - sudo apt-get install -y percona-server-client
     script:
         - make cover
     coverage: /Coverage:\ (\d+\.\d+?)%$/
