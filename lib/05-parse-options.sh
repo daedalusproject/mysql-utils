@@ -25,22 +25,9 @@ function check_action {
         report_error "$action is not a valid action."
         exit 1
     fi
-    #MYSQL_UTILS_ACTION=$action
+    MYSQL_UTILS_ACTION=$action
 }
 
-function parse_change_root_password_options {
-
-    declare -a change_root_password_options_array=(
-    "new-root-password"
-    "new-root-host"
-    )
-
-    change_root_password_options="${change_root_password_options_array[*]}"
-    change_root_password_options="${change_root_password_options/ /:,}:"
-    change_root_password_options_OR="${change_root_password_options_array[*]}"
-    change_root_password_options_OR=$( echo "--$change_root_password_options_OR" | sed 's/ /| --/g' )
-
-}
 
 function start_script {
 

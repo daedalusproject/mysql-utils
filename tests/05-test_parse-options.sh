@@ -69,7 +69,8 @@ testExistentAction() {
 }
 
 testChangeRootPasswordOptions() {
-    parse_change_root_password_options --new-root-password="test"
+    declare_change_root_password_options
+    get_variables --new-root-password="test"
 
     assertEquals "--new-root-password| --new-root-host" "$change_root_password_options_OR"
 }
