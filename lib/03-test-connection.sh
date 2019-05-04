@@ -78,5 +78,6 @@ function test_connection {
 
         if [[ $connection_error == 1 ]]; then
             report_error "Failed to connect after $retry retries."
+            exit 1
         fi
 }
