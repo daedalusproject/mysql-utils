@@ -83,6 +83,21 @@ testNewPasswordVariableSet() {
     assertEquals "0" "$new_password_error"
 }
 
+testChangeRootPassword() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="letmein"
+    MYSQL_HOST="%"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+    MYSQL_NEW_ROOT_PASSWORD="newpass"
+    MYSQL_NEW_ROOT_HOST="%"
+
+    change_root_password
+    new_password_error=$?
+
+    assertEquals "0" "$new_password_error"
+}
 
 #
 # Load shUnit2.
