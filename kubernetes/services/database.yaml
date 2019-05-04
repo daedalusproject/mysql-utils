@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
   - name: percona-server
-    image: daedalusproject/base_develop_percona_server
+    image: daedalusproject/base_percona_server:201905041029
     ports:
     - containerPort: 3306
     lifecycle:

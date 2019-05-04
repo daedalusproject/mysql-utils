@@ -8,13 +8,13 @@ stages:
     - update_repo
 
 linter:
-    image: daedalusproject/base_bash_utils:201905011523
+    image: daedalusproject/base_bash_utils:201905041029
     stage: linter
     script:
         - shellcheck --exclude=SC2086 lib/*.sh
 
 deploy_databse:
-    image: daedalusproject/base_kubectl:201905011523
+    image: daedalusproject/base_kubectl:201905041029
     stage: set_test_environment
     script:
         - declare -a -g REQUIRED_VARIABLES
@@ -25,7 +25,7 @@ deploy_databse:
         - create_configs
 
 unit_tests:
-    image: daedalusproject/base_bash_utils:latest
+    image: daedalusproject/base_bash_utils:201905041029
     stage: test
     before_script:
         - sudo apt-get update
@@ -34,7 +34,7 @@ unit_tests:
         - make test
 
 deploy_databse_for_coverage:
-    image: daedalusproject/base_kubectl:201905011523
+    image: daedalusproject/base_kubectl:201905041029
     stage: set_coverage_environment
     script:
         - declare -a -g REQUIRED_VARIABLES
@@ -46,7 +46,7 @@ deploy_databse_for_coverage:
 
 
 cover:
-    image: daedalusproject/base_bash_utils:201905011523
+    image: daedalusproject/base_bash_utils:201905041029
     stage: coverage
     before_script:
         - sudo apt-get update
