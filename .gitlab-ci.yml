@@ -11,7 +11,7 @@ linter:
     image: daedalusproject/base_bash_utils:201905011523
     stage: linter
     script:
-        - shellcheck -exclude=SC2086 lib/*.sh
+        - shellcheck --exclude=SC2086 lib/*.sh
 
 deploy_databse:
     image: daedalusproject/base_kubectl:201905011523
