@@ -26,8 +26,3 @@ function check_new_root_password {
     fi
 }
 
-function change_root_password {
-    check_new_root_password
-    CONNECTION_STRING=$@
-    mysql $CONNECTION_STRING -Bse
-}
