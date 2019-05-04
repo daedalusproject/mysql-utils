@@ -13,6 +13,19 @@ spec:
     image: daedalusproject/base_develop_percona_server
     ports:
     - containerPort: 3306
+    lifecycle:
+      postStart:
+        exec:
+          command:
+            - "sh"
+            - "-c"
+            - >
+              while [ ! -S /var/run/mysqld/mysqld.sock ];
+              do
+              sleep 2 ;
+              done ;
+              /usr/bin/mysql -uroot -pMyNewPass -Bse "CREATE USER 'root'@'%' IDENTIFIED BY 'letmein';";
+              /usr/bin/mysql -uroot -pMyNewPass -Bse "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION";
 ---
 apiVersion: v1
 kind: Service
