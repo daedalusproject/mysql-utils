@@ -11,6 +11,7 @@
 #===============================================================================
 
 source lib/01-messages.sh
+source lib/03-test-connection.sh
 
 function check_new_root_password {
     has_errors=0
@@ -26,3 +27,20 @@ function check_new_root_password {
     fi
 }
 
+function change_root_password {
+
+    check_new_root_password
+    test_connection
+
+    #test_connection creates $CONNECTION_STRING
+
+    change_password_message=$(mysql $CONNECTION_STRING -Bse  "ALTER USER 'root'@'$MYSQL_NEW_ROOT_HOST' IDENTIFIED BY '$MYSQL_NEW_ROOT_PASSWORD';" 2>&1)
+
+    change_passwod_status=$?
+
+    if [[ $change_passwod_status != 0 ]]; then
+        report_error "$change_password_message"
+        exit 1
+    fi
+    exit 1
+}
