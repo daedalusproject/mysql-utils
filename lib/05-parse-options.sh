@@ -27,3 +27,17 @@ function check_action {
     fi
     MYSQL_UTILS_ACTION=$action
 }
+
+function start_script {
+
+    if [[ "$#" -lt 1 ]]; then
+        report_error "'action' is required, see usage."
+        exit 1
+    fi
+
+    check_action "$1"
+
+    #Launch action
+    $MYSQL_UTILS_ACTION
+
+}
