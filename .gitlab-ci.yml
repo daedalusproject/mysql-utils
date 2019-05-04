@@ -48,7 +48,7 @@ deploy_databse_for_coverage:
 cover:
     image: daedalusproject/base_bash_utils:201905011523
     stage: coverage
-   before_script:
+    before_script:
         - sudo apt-get update
         - sudo apt-get install -y percona-server-client
     script:
