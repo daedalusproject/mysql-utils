@@ -38,12 +38,14 @@ tearDown() {
     unset MYSQL_CONNECTION_TIMEOUT
 
     unset MYSQL_NEW_ROOT_PASSWORD
+    unset MYSQL_NEW_ROOT_HOST
 }
 
 testNoNewPasswordVariableSet() {
 
     cat << EOF > $TMP_FOLDER/nonewpassword
 Error: MYSQL_NEW_ROOT_PASSWORD is required.
+Error: MYSQL_NEW_ROOT_HOST is required.
 EOF
 
     MYSQL_USER="roi000ot"
@@ -73,6 +75,7 @@ testNewPasswordVariableSet() {
     MYSQL_CONNECTION_RETRIES=12
     MYSQL_CONNECTION_TIMEOUT=100
     MYSQL_NEW_ROOT_PASSWORD="somepass"
+    MYSQL_NEW_ROOT_HOST="%"
 
     check_new_root_password
     new_password_error=$?
