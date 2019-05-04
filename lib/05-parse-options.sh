@@ -25,7 +25,7 @@ function check_action {
         report_error "$action is not a valid action."
         exit 1
     fi
-    MYSQL_UTILS_ACTION=$action
+    #MYSQL_UTILS_ACTION=$action
 }
 
 function parse_change_root_password_options {
@@ -52,6 +52,6 @@ function start_script {
     check_action "$1"
 
     #Launch action
-    parse_$MYSQL_UTILS_ACTION_options
+#    parse_$MYSQL_UTILS_ACTION_options
 
 }
