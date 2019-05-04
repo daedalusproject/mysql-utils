@@ -18,6 +18,9 @@ test:
 	( $(TEST_DIR)/02-test_connection-variables.sh )
 	@echo "- test connection"
 	( $(TEST_DIR)/03-test_test-connection.sh )
+	@echo "- change root password"
+	( $(TEST_DIR)/04-test_change-root-password.sh )
+
 
 
 cover:

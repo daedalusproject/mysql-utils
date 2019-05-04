@@ -7,7 +7,7 @@
 
 #        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
 #  ORGANIZATION: Daedalus Project
-#       CREATED: 05/01/2019 19:03
+#       CREATED: 05/05/2019 19:03
 #===============================================================================
 
 source lib/02-connection-variables.sh
@@ -143,9 +143,9 @@ testTestConnectionFailed() {
     MYSQL_CONNECTION_TIMEOUT=1
 
     $(test_connection 2> /dev/null)
-    failed_conection=$?
+    failed_connection=$?
 
-    assertEquals "1" "$failed_conection"
+    assertEquals "1" "$failed_connection"
 }
 
 testTestConnectionFailedNoPort() {
@@ -157,9 +157,9 @@ testTestConnectionFailedNoPort() {
     MYSQL_CONNECTION_TIMEOUT=1
 
     $(test_connection 2> /dev/null)
-    failed_conection=$?
+    failed_connection=$?
 
-    assertEquals "1" "$failed_conection"
+    assertEquals "1" "$failed_connection"
 }
 
 testTestConnectionSuccess() {
@@ -172,9 +172,9 @@ testTestConnectionSuccess() {
     MYSQL_CONNECTION_TIMEOUT=1
 
     test_connection 2> /dev/null
-    failed_conection=$?
+    failed_connection=$?
 
-    assertEquals "0" "$failed_conection"
+    assertEquals "0" "$failed_connection"
 }
 
 #
