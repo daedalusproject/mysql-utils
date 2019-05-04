@@ -24,8 +24,8 @@ spec:
               do
               sleep 2 ;
               done ;
-              /usr/bin/mysql -uroot -pMyNewPass -Bse "CREATE USER 'root'@'%' IDENTIFIED BY 'letmein';";
-              /usr/bin/mysql -uroot -pMyNewPass -Bse "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION";
+              /usr/bin/mysql -uroot -pletmein -Bse "CREATE USER 'root'@'%' IDENTIFIED BY 'letmein';";
+              /usr/bin/mysql -uroot -pletmein -Bse "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION";
 ---
 apiVersion: v1
 kind: Service
