@@ -13,8 +13,21 @@
 source lib/01-messages.sh
 
 function check_new_root_password {
- if [[ -z $MYSQL_NEW_ROOT_PASSWORD ]]; then
-     report_error "MYSQL_NEW_ROOT_PASSWORD is required."
-     exit 1
- fi
+    has_errors=0
+    for required_variable in 'MYSQL_NEW_ROOT_PASSWORD' 'MYSQL_NEW_ROOT_HOST'
+    do
+        if [[ -z ${!required_variable} ]]; then
+            report_error "$required_variable is required."
+            has_errors=1
+        fi
+    done
+    if [[ $has_errors == 1 ]]; then
+        exit 1
+    fi
+}
+
+function change_root_password {
+    check_new_root_password
+    CONNECTION_STRING=$@
+    mysql $CONNECTION_STRING -Bse
 }
