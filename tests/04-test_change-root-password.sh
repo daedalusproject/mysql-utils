@@ -87,7 +87,7 @@ testNewPasswordVariableSet() {
 testChangeRootPassword() {
     MYSQL_USER="root"
     MYSQL_PASSWORD="letmein"
-    MYSQL_HOST="%"
+    MYSQL_HOST="percona-server"
     MYSQL_PORT=3306
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
@@ -103,7 +103,7 @@ testChangeRootPassword() {
 testOldRootPasswordFails() {
     MYSQL_USER="root"
     MYSQL_PASSWORD="letmein"
-    MYSQL_HOST="%"
+    MYSQL_HOST="percona-server"
     MYSQL_PORT=3306
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
@@ -117,7 +117,7 @@ testOldRootPasswordFails() {
 testNewRootPasswordSuccess() {
     MYSQL_USER="root"
     MYSQL_PASSWORD="newpass"
-    MYSQL_HOST="%"
+    MYSQL_HOST="percona-server"
     MYSQL_PORT=3306
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
@@ -131,7 +131,7 @@ testNewRootPasswordSuccess() {
 testRestoreRootPassword() {
     MYSQL_USER="root"
     MYSQL_PASSWORD="newpass"
-    MYSQL_HOST="%"
+    MYSQL_HOST="percona-server"
     MYSQL_PORT=3306
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
