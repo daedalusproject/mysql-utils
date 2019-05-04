@@ -43,7 +43,6 @@ tearDown() {
 
 testUnexistentAction() {
 
-
     cat << EOF > $TMP_FOLDER/nonexistenaction
 Error: nonexistent is not a valid action.
 EOF
@@ -55,7 +54,7 @@ EOF
 
     error_message_diff=$?
 
-    assertEquals "1" "$no_new_password_error"
+    assertEquals "1" "$non_existent_action_error"
     assertEquals "0" "$error_message_diff"
     assertEquals "" "$MYSQL_UTILS_ACTION"
 
