@@ -42,5 +42,4 @@ function change_root_password {
         report_error "$change_password_message"
         exit 1
     fi
-    exit 1
 }

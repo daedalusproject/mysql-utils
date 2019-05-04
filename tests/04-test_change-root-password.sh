@@ -10,6 +10,7 @@
 #       CREATED: 04/05/2019 13:01
 #===============================================================================
 
+source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
 
 oneTimeSetUp() {
@@ -97,6 +98,50 @@ testChangeRootPassword() {
     new_password_error=$?
 
     assertEquals "0" "$new_password_error"
+}
+
+testOldRootPasswordFails() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="letmein"
+    MYSQL_HOST="%"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+
+    $(test_connection 2> /dev/null)
+    failed_connection=$?
+
+    assertEquals "1" "$failed_connection"
+}
+
+testNewRootPasswordSuccess() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="newpass"
+    MYSQL_HOST="%"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+
+    $(test_connection 2> /dev/null)
+    succeeded_connection=$?
+
+    assertEquals "0" "$succeeded_connection"
+}
+
+testRestoreRootPassword() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="newpass"
+    MYSQL_HOST="%"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+    MYSQL_NEW_ROOT_PASSWORD="letmein"
+    MYSQL_NEW_ROOT_HOST="%"
+
+    change_root_password
+    restore_password_error=$?
+
+    assertEquals "0" "$restore_password_error"
 }
 
 #
