@@ -4,5 +4,3 @@
 
 override_dh_auto_install:
 	$(MAKE) DESTDIR=$$(pwd)/debian/daedalus-project-mysql-utils prefix=/usr install
-override_dh_auto_test:
-	$(MAKE) TEST_DIR=$$(pwd)/tests test
