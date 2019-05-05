@@ -63,21 +63,21 @@ function test_connection {
     check_connection_variables
 
     CONNECTION_STRING="-u$MYSQL_USER -p$MYSQL_PASSWORD"
-        if [[ "$MYSQL_PORT" != "" ]]; then
+    if [[ "$MYSQL_PORT" != "" ]]; then
         CONNECTION_STRING="$CONNECTION_STRING -h $MYSQL_HOST -P $MYSQL_PORT"
-        else
-            CONNECTION_STRING="$CONNECTION_STRING -S $MYSQL_SOCKET"
-        fi
+    else
+        CONNECTION_STRING="$CONNECTION_STRING -S $MYSQL_SOCKET"
+    fi
 
-        connection_error=1
-        for retry  in $(seq 1 "$MYSQL_CONNECTION_RETRIES")
-        do
-            mysql $CONNECTION_STRING -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
-            sleep "$MYSQL_CONNECTION_TIMEOUT"
-        done
+    connection_error=1
+    for retry  in $(seq 1 "$MYSQL_CONNECTION_RETRIES")
+    do
+        mysql $CONNECTION_STRING -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
+        sleep "$MYSQL_CONNECTION_TIMEOUT"
+    done
 
-        if [[ $connection_error == 1 ]]; then
-            report_error "Failed to connect after $retry retries."
-            exit 1
-        fi
+    if [[ $connection_error == 1 ]]; then
+        report_error "Failed to connect after $retry retries."
+        exit 1
+    fi
 }
