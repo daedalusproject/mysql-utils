@@ -10,6 +10,9 @@
 #       CREATED: 01/05/2019 18:46
 #===============================================================================
 
+if [[ -z $LOCAL_ERROR_FILE ]]; then
+    LOCAL_ERROR_FILE="/var/log/daedalus-project-mysql-utils-error.log"
+fi
 
 function debug {
 

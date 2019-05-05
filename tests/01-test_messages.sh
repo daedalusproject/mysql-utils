@@ -12,6 +12,10 @@
 
 source lib/01-messages.sh
 
+setUp() {
+    export LOCAL_ERROR_FILE="/var/tmp/daedalus-project-mysql-utils/error"
+}
+
 TearDown() {
     unset DEBUG
 }
