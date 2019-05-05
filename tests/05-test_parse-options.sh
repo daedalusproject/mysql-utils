@@ -92,7 +92,46 @@ testLaunchChangeRootPasswordWithInvalidOptions() {
     assertEquals "1" "$error_code"
 }
 
+testLaunchChangeRootPasswordWithoutRequiredOptions() {
+    cat << EOF > $TMP_FOLDER/changepasswordnooptions
+Error: MYSQL_NEW_ROOT_PASSWORD is required.
+Error: MYSQL_NEW_ROOT_HOST is required.
+EOF
 
+
+    error=$(start_script change_root_password 2> $TMP_FOLDER/changepasswordnooptions_test)
+    error_code=$?
+    diff $TMP_FOLDER/changepasswordnooptions $TMP_FOLDER/changepasswordnooptions_test > /dev/null
+
+    error_message_diff=$?
+
+    assertEquals "0" "$error_message_diff"
+    assertEquals "1" "$error_code"
+}
+
+testLaunchChangeRootPasswordWithoutRequiredConnectionOptions() {
+    cat << EOF > $TMP_FOLDER/changepasswordnoconnectionoptions
+Error: MYSQL_USER is required.
+Error: MYSQL_PASSWORD is required.
+EOF
+
+    MYSQL_NEW_ROOT_HOST="localhost"
+    error=$(start_script change_root_password --new-root-password="newpass" 2> $TMP_FOLDER/changepasswordnoconnectionoptions_test)
+    error_code=$?
+
+    diff $TMP_FOLDER/changepasswordnoconnectionoptions $TMP_FOLDER/changepasswordnoconnectionoptions_test > /dev/null
+    error_message_diff=$?
+
+    assertEquals "0" "$error_message_diff"
+    assertEquals "1" "$error_code"
+}
+
+testLaunchChangeRootPassword() {
+    start_script change_root_password --new-root-password="newpass" --new-root-host="%" -uroot -pletmein -P3306
+    new_password_error=$?
+
+    ssertEquals "0" "$new_password_error"
+}
 #
 # Load shUnit2.
 . /usr/bin/shunit2
