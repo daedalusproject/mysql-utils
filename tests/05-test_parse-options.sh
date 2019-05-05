@@ -130,8 +130,16 @@ testLaunchChangeRootPassword() {
     start_script change_root_password --new-root-password="newpass" --new-root-host="%" -uroot -pletmein -P3306 --host="percona-server"
     new_password_error=$?
 
-    ssertEquals "0" "$new_password_error"
+    assertEquals "0" "$new_password_error"
 }
+
+testLaunchRestoreRootPassword() {
+    start_script change_root_password --new-root-password="letmein" --new-root-host="%" -uroot -pnewpass -P3306 --host="percona-server"
+    restore_password_error=$?
+
+    assertEquals "0" "$restore_password_error"
+}
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2
