@@ -17,6 +17,7 @@ source lib/04-change-root-password.sh
 
 declare -a available_actions=(
 'change_root_password'
+'create_database'
 )
 
 function check_action {
@@ -41,5 +42,4 @@ function start_script {
     #Launch action
     get_variables "${@:1}"
     ${MYSQL_UTILS_ACTION}
-
 }
