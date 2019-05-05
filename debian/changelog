@@ -1,3 +1,9 @@
+daedalus-project-mysql-utils (0.3-1) UNRELEASED; urgency=medium
+
+  * New action: create database
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 05 May 2019 22:02:00 +0200
+
 daedalus-project-mysql-utils (0.2-1) RELEASED; urgency=medium
 
   * First release
