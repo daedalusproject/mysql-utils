@@ -12,6 +12,10 @@
 
 source lib/01-messages.sh
 
+setUp() {
+    export LOCAL_ERROR_FILE="/var/tmp/daedalus-project-mysql-utils/error"
+}
+
 TearDown() {
     unset DEBUG
 }
@@ -26,10 +30,6 @@ testDebugWithMessage() {
     expectedMessage="This is a test"
     menssage=$(debug "$expectedMessage")
     assertSame "$expectedMessage" "$menssage" #If debug options is  enabled message is printed
-}
-
-setUp {
-    export LOCAL_ERROR_FILE="/var/tmp/daedalus-project-mysql-utils/error"
 }
 
 # Load shUnit2.
