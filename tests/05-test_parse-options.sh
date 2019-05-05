@@ -127,7 +127,7 @@ EOF
 }
 
 testLaunchChangeRootPassword() {
-    start_script change_root_password --new-root-password="newpass" --new-root-host="%" -uroot -pletmein -P3306
+    start_script change_root_password --new-root-password="newpass" --new-root-host="%" -uroot -pletmein -P3306 --host="percona-server"
     new_password_error=$?
 
     ssertEquals "0" "$new_password_error"
