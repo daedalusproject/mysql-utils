@@ -11,7 +11,7 @@
 #===============================================================================
 
 source lib/01-messages.sh
-source lib/02-connection-variables.sh
+source lib/02-variables.sh
 
 declare -A default_connection_options_hash=(
 ["MYSQL_HOST"]="localhost"

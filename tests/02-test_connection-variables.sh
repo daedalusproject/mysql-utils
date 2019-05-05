@@ -10,7 +10,7 @@
 #       CREATED: 01/05/2019 19:03
 #===============================================================================
 
-source lib/02-connection-variables.sh
+source lib/02-variables.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -48,22 +48,22 @@ testDeclaredconnectionOptions() {
 
 testGetOpsEmpty(){
     declare_connection_variables
-    get_connection_variables
+    get_variables
     empty_variables_error=$?
     assertEquals "0" "$empty_variables_error"
 }
 
 testInvalidOption(){
     declare_connection_variables
-    empty_variable_error=$(get_connection_variables --test="who cares" 2>&1)
+    empty_variable_error=$(get_variables --test="who cares" 2>&1)
     empty_variables_status=$?
-    assertEquals "Error: connection-options: unrecognized option '--test=who cares'" "$empty_variable_error"
+    assertEquals "Error: options: unrecognized option '--test=who cares'" "$empty_variable_error"
     assertEquals "1" "$empty_variables_status"
 }
 
 testValidOption(){
     declare_connection_variables
-    get_connection_variables -u "root"
+    get_variables -u "root"
     valid_variable_error=$?
     assertEquals "0" "$valid_variable_error"
     assertEquals "root" "$MYSQL_USER"
@@ -71,7 +71,7 @@ testValidOption(){
 
 testLongValidOption(){
     declare_connection_variables
-    get_connection_variables --user="root"
+    get_variables --user="root"
     valid_long_variables_status=$?
     assertEquals "" "$valid_long_variable_status"
     assertEquals "root" "$MYSQL_USER"
@@ -79,7 +79,7 @@ testLongValidOption(){
 
 testLongValidOption2(){
     declare_connection_variables
-    get_connection_variables --connection-retries=2
+    get_variables --connection-retries=2
     valid_long_variables_status=$?
     assertEquals "" "$valid_long_variable_status"
     assertEquals "2" "$MYSQL_CONNECTION_RETRIES"

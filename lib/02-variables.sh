@@ -1,9 +1,9 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 02-connection-variables.sh
+#          FILE: 02-variables.sh
 #
-#   DESCRIPTION: Manage connection variables
+#   DESCRIPTION: Manage variables
 
 #        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
 #  ORGANIZATION: Daedalus Project
@@ -21,6 +21,11 @@ declare -A connection_options_hash=(
 ["r"]="connection-retries"
 ["t"]="connection-timeout"
 )
+
+    declare -a change_root_password_options_array=(
+    "new-root-password"
+    "new-root-host"
+    )
 
 function set_short_mysql_variables {
 
@@ -54,8 +59,22 @@ function declare_connection_variables {
     long_connection_options="${long_connection_options//,/:,}:"
 }
 
-function get_connection_variables {
-    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options" -n 'connection-options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
+function declare_change_root_password_options {
+
+    change_root_password_options="${change_root_password_options_array[*]}"
+    change_root_password_options="${change_root_password_options/ /:,}:"
+    change_root_password_options_OR="${change_root_password_options_array[*]}"
+    change_root_password_options_OR=$( echo "--$change_root_password_options_OR" | sed 's/ /| --/g' )
+}
+
+function get_variables {
+
+    declare_connection_variables
+    declare_change_root_password_options
+
+    long_options_OR="$long_connection_options_OR | $change_root_password_options_OR"
+
+    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options" -n 'options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 
     getopt_status=$?
 
@@ -74,7 +93,7 @@ function get_connection_variables {
             $connection_options_OR )
                 set_short_mysql_variables $1 $2
                 shift ; shift;;
-            $long_connection_options_OR )
+            $long_options_OR )
                 set_mysql_variables $1 $2
                 shift ; shift;;
 
