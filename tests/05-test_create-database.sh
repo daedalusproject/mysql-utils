@@ -40,12 +40,14 @@ tearDown() {
 
     unset MYSQL_NEW_ROOT_PASSWORD
     unset MYSQL_NEW_ROOT_HOST
+
+    unset MYSQL_DATABASE_NAME
 }
 
 testNoDatabaseNameSet() {
 
     cat << EOF > $TMP_FOLDER/nodatabasename
-Error: MYSQL_DATABASE_NAMED is required.
+Error: MYSQL_DATABASE_NAME is required.
 EOF
 
     MYSQL_USER="roi000ot"
@@ -61,7 +63,7 @@ EOF
 
     diff $TMP_FOLDER/nodatabasename $TMP_FOLDER/nodatabasename_test > /dev/null
     error_message_diff=$?
-    assertEquals "1" "$no_new_password_error"
+    assertEquals "1" "$no_database_error"
     assertEquals "0" "$error_message_diff"
 }
 
