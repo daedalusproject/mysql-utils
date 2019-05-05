@@ -28,5 +28,9 @@ testDebugWithMessage() {
     assertSame "$expectedMessage" "$menssage" #If debug options is  enabled message is printed
 }
 
+setUp {
+    export LOCAL_ERROR_FILE="/var/tmp/daedalus-project-mysql-utils/error"
+}
+
 # Load shUnit2.
 . /usr/bin/shunit2
