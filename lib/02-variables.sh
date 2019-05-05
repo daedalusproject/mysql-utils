@@ -83,6 +83,7 @@ function get_variables {
 
     declare_connection_variables
     declare_change_root_password_options
+    declare_create_database_options
 
     long_options_OR="$long_connection_options_OR | $change_root_password_options_OR | $create_database_options_OR"
 
