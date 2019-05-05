@@ -63,7 +63,7 @@ create_deb_package:
     image: daedalusproject/base_deb_builder:201905041029
     stage: package
     script:
-        - DEB_BUILD_OPTIONS=notest dpkg-buildpackage -uc -b
+        - DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -uc -b
         - mkdir package
         - mv ../daedalus-project-mysql-utils*.deb package/
     artifacts:
