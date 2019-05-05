@@ -129,7 +129,7 @@ EOF
 }
 
 testCreateDatabase() {
-    start_script create_database --database_name="newdatabase" -uroot -pletmein -P3306 --host="percona-server"
+    start_script create_database --database-name="otherdatabase" -uroot -pletmein -P3306 --host="percona-server"
     new_database_error=$?
 
     assertEquals "0" "$new_database_error"
