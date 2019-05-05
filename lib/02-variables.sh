@@ -84,7 +84,7 @@ function get_variables {
     declare_connection_variables
     declare_change_root_password_options
 
-    long_options_OR="$long_connection_options_OR | $change_root_password_options_OR | $create_database_OR"
+    long_options_OR="$long_connection_options_OR | $change_root_password_options_OR | $create_database_options_OR"
 
     OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options,$create_database_options" -n 'options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 

@@ -15,13 +15,11 @@ source lib/03-test-connection.sh
 
 function check_database_name {
     has_errors=0
-    for required_variable in 'MYSQL_DATABASE_NAME'
-    do
-        if [[ -z ${!required_variable} ]]; then
-            report_error "$required_variable is required."
-            has_errors=1
-        fi
-    done
+    if [[ -z $MYSQL_DATABASE_NAME ]]; then
+        report_error "$required_variable is required."
+        has_errors=1
+    fi
+
     if [[ $has_errors == 1 ]]; then
         exit 1
     fi
