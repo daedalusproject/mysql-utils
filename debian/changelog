@@ -1,3 +1,10 @@
+daedalus-project-mysql-utils (0.2-1) RELEASED; urgency=medium
+
+  * First release
+  * Available actions: change mysql root password
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 05 May 2019 17:36:00 +0200
+
 daedalus-project-mysql-utils (0.1-2) UNRELEASED; urgency=medium
 
   * Manage LOCAL_ERROR_FILE
