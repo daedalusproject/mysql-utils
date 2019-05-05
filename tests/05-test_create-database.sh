@@ -98,7 +98,7 @@ testCreateDatabase() {
 
     assertEquals "0" "$new_password_error"
 
-    check_database_exists=$(mysql -uroot -pletmein -Bse "show databases" 2> /dev/null| grep test > /dev/null)
+    check_database_exists=$(mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -Bse "show databases" 2> /dev/null| grep test > /dev/null)
     check_database_error=$?
     assertEquals "0" "$check_database_error"
 }
