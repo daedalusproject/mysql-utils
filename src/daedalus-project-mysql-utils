@@ -1,0 +1,19 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: Daedalus Project's MySQL utils
+#
+#   DESCRIPTION: Utilities for interacting with MySQL like servers
+
+#        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
+#  ORGANIZATION: Daedalus Project
+#       CREATED: 05/05/2019 12:47
+#===============================================================================
+
+source lib/01-messages.sh
+source lib/02-variables.sh
+source lib/03-test-connection.sh
+source lib/04-change-root-password.sh
+source lib/05-parse-options.sh
+
+start_script "$@"

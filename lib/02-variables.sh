@@ -22,10 +22,10 @@ declare -A connection_options_hash=(
 ["t"]="connection-timeout"
 )
 
-    declare -a change_root_password_options_array=(
-    "new-root-password"
-    "new-root-host"
-    )
+declare -a change_root_password_options_array=(
+"new-root-password"
+"new-root-host"
+)
 
 function set_short_mysql_variables {
 
