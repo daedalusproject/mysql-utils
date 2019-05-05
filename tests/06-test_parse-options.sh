@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-test_parse-options.sh
+#          FILE: 06-test_parse-options.sh
 #
 #   DESCRIPTION: Test options parsing
 
@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/05-parse-options.sh
+source lib/06-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -39,6 +39,8 @@ tearDown() {
 
     unset MYSQL_NEW_ROOT_PASSWORD
     unset MYSQL_NEW_ROOT_HOST
+
+    unset MYSQL_DATABASE_NAME
 }
 
 testUnexistentAction() {
@@ -124,6 +126,13 @@ EOF
 
     assertEquals "0" "$error_message_diff"
     assertEquals "1" "$error_code"
+}
+
+testCreateDatabase() {
+    start_script create_database --database-name="otherdatabase" -uroot -pletmein -P3306 --host="percona-server"
+    new_database_error=$?
+
+    assertEquals "0" "$new_database_error"
 }
 
 testLaunchChangeRootPassword() {

@@ -11,7 +11,7 @@
 #===============================================================================
 
 if [[ -z $LOCAL_ERROR_FILE ]]; then
-    LOCAL_ERROR_FILE="/var/log/daedalus-project-mysql-utils-error.log"
+    LOCAL_ERROR_FILE="/var/tmp/daedalus-project-mysql-utils-error.log"
 fi
 
 function debug {

@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-parse-options.sh
+#          FILE: 06-parse-options.sh
 #
 #   DESCRIPTION: Parses actions and tuns them
 
@@ -14,9 +14,11 @@ source lib/01-messages.sh
 source lib/02-variables.sh
 source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
+source lib/05-create-database.sh
 
 declare -a available_actions=(
 'change_root_password'
+'create_database'
 )
 
 function check_action {
@@ -41,5 +43,4 @@ function start_script {
     #Launch action
     get_variables "${@:1}"
     ${MYSQL_UTILS_ACTION}
-
 }
