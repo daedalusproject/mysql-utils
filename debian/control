@@ -1,0 +1,11 @@
+Source: daedalus-project-mysql-utils
+Maintainer: Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>
+Section: misc
+Priority: optional
+Standards-Version: 0.1
+Build-Depends: debhelper (>= 9)
+
+Package: daedalus-project-mysql-utils
+Architecture: any
+Depends: mysql-client, ${shlibs:Depends}, ${misc:Depends}
+Description: Utilities for interacting with MySQL like servers.
