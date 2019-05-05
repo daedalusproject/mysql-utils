@@ -75,6 +75,15 @@ testChangeRootPasswordOptions() {
     assertEquals "--new-root-password| --new-root-host" "$change_root_password_options_OR"
 }
 
+testLaunchWithoutOptions() {
+    error_message=$(start_script 2>&1)
+    error_code=$?
+
+    assertEquals "Error: 'action' is required, see usage." "$error_message"
+    assertEquals "1" "$error_code"
+}
+
+
 testLaunchChangeRootPasswordWithInvalidOptions() {
     error_message=$(start_script change_root_password --non-existent-option="thisisatest" 2>&1)
     error_code=$?
