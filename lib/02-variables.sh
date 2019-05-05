@@ -73,9 +73,9 @@ function declare_change_root_password_options {
 
 function declare_create_database_options {
 
-    create_database_options="${create_database_array[*]}"
+    create_database_options="${create_database_options_array[*]}"
     create_database_options="${create_database_options/ /:,}:"
-    create_database_OR="${create_database_array[*]}"
+    create_database_OR="${create_database_options_array[*]}"
     create_database_OR=$( echo "--$create_database_options_OR" | sed 's/ /| --/g' )
 }
 
