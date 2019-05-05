@@ -74,7 +74,7 @@ function get_variables {
 
     long_options_OR="$long_connection_options_OR | $change_root_password_options_OR"
 
-    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options" -n 'connection-options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
+    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options" -n 'options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 
     getopt_status=$?
 

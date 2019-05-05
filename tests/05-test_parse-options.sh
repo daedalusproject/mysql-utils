@@ -75,6 +75,15 @@ testChangeRootPasswordOptions() {
     assertEquals "--new-root-password| --new-root-host" "$change_root_password_options_OR"
 }
 
+testLaunchChangeRootPasswordWithInvalidOptions() {
+    error_message=$(start_script change_root_password --non-existent-option="thisisatest" 2>&1)
+    error_code=$?
+
+    assertEquals "Error: options: unrecognized option '--non-existent-option=thisisatest'" "$error_message"
+    assertEquals "1" "$error_code"
+}
+
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2

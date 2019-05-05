@@ -57,7 +57,7 @@ testInvalidOption(){
     declare_connection_variables
     empty_variable_error=$(get_variables --test="who cares" 2>&1)
     empty_variables_status=$?
-    assertEquals "Error: connection-options: unrecognized option '--test=who cares'" "$empty_variable_error"
+    assertEquals "Error: options: unrecognized option '--test=who cares'" "$empty_variable_error"
     assertEquals "1" "$empty_variables_status"
 }
 

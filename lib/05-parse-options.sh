@@ -39,6 +39,7 @@ function start_script {
     check_action "$1"
 
     #Launch action
-#    parse_$MYSQL_UTILS_ACTION_options
+    get_variables ${@:1}
+    ${MYSQL_UTILS_ACTION}
 
 }
