@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-parse-options.sh
+#          FILE: 06-parse-options.sh
 #
 #   DESCRIPTION: Parses actions and tuns them
 
