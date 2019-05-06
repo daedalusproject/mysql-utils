@@ -15,10 +15,12 @@ source lib/02-variables.sh
 source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
 source lib/05-create-database.sh
+source lib/06-create-user.sh
 
 declare -a available_actions=(
 'change_root_password'
 'create_database'
+'create_user'
 )
 
 function check_action {
