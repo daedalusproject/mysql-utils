@@ -152,7 +152,7 @@ testGrantAllPrivileges() {
 
     assertEquals "0" "$grant_error"
 
-    check_grant=$(mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -Bse "SHOW GRANTS FOR '$MYSQL_GRANT_USER'@'$MYSQL_GRANT_HOST';" 2> /dev/null | grep \"$MYSQL_GRANT_USER\" | grep \"$MYSQL_GRANT_PRIV_TYPE\" | grep \"$MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS\"> /dev/null)
+    check_grant=$(mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -Bse "SHOW GRANTS FOR '$MYSQL_GRANT_USER'@'$MYSQL_GRANT_HOST';" 2> /dev/null | grep "'$MYSQL_GRANT_USER'" | grep "'$MYSQL_GRANT_PRIV_TYPE'" | grep "'$MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS'" > /dev/null)
     check_grant_error=$?
     assertEquals "0" "$check_grant_error"
 }
