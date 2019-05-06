@@ -89,7 +89,7 @@ function declare_create_database_options {
 function declare_create_user_options {
 
     create_user_options="${create_user_options_array[*]}"
-    create_user_options="${create_user_options/ /:,}:"
+    create_user_options="${create_user_options// /:,}:"
     create_user_options_OR="${create_user_options_array[*]}"
     create_user_options_OR=$( echo "--$create_user_options_OR" | sed 's/ /| --/g' )
 }

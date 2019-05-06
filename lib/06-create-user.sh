@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-create-user.sh
+#          FILE: 06-create-user.sh
 #
 #   DESCRIPTION: Creates users
 
