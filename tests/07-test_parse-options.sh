@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/06-parse-options.sh
+source lib/07-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -41,6 +41,11 @@ tearDown() {
     unset MYSQL_NEW_ROOT_HOST
 
     unset MYSQL_DATABASE_NAME
+
+    unset MYSQL_NEW_USER
+    unset MYSQL_NEW_USER_PASSWORD
+    unset MYSQL_NEW_USER_HOST
+
 }
 
 testUnexistentAction() {
@@ -133,6 +138,13 @@ testCreateDatabase() {
     new_database_error=$?
 
     assertEquals "0" "$new_database_error"
+}
+
+testCreateNewUser() {
+    start_script create_user --new-user="otheruser" --new-user-password="somepass" --new-user-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    new_user_error=$?
+
+    assertEquals "0" "$new_user_error"
 }
 
 testLaunchChangeRootPassword() {
