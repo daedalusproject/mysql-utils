@@ -22,8 +22,10 @@ test:
 	( $(TEST_DIR)/04-test_change-root-password.sh )
 	@echo "- create database"
 	( $(TEST_DIR)/05-test_create-database.sh* )
+	@echo "- create user"
+	( $(TEST_DIR)/06-test_create-user.sh* )
 	@echo "- parse options"
-	( $(TEST_DIR)/06-test_parse-options.sh* )
+	( $(TEST_DIR)/07-test_parse-options.sh* )
 
 
 
