@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 06-test_parse-options.sh
+#          FILE: 08-test_parse-options.sh
 #
 #   DESCRIPTION: Test options parsing
 
@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/07-parse-options.sh
+source lib/08-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -145,6 +145,13 @@ testCreateNewUser() {
     new_user_error=$?
 
     assertEquals "0" "$new_user_error"
+}
+
+testGrant() {
+    start_script grant --grant-priv-type="ALL PRIVILEGES" --grant-other-account-characteristics="WITH GRANT OPTION" --grant-user="otheruser" --grant-database="otherdatabase" --new-user-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    grant_error=$?
+
+    assertEquals "0" "$grant_error"
 }
 
 testLaunchChangeRootPassword() {
