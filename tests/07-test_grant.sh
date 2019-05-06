@@ -57,8 +57,8 @@ tearDown() {
 testNoGrantData() {
 
     cat << EOF > $TMP_FOLDER/nograntdata
-Error: MYSQL_GRANT_GRANT_USER is required.
-Error: MYSQL_GRANT_GRANT_DATABASE is required.
+Error: MYSQL_GRANT_USER is required.
+Error: MYSQL_GRANT_DATABASE is required.
 EOF
 
     MYSQL_USER="roi000ot"

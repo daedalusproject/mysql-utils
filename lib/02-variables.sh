@@ -37,6 +37,14 @@ declare -a create_user_options_array=(
 "new-user-host"
 )
 
+declare -a grant_options_array=(
+"grant-priv-type"
+"grant-user"
+"grant-database"
+"grant-host"
+"grant-tables"
+"grant-other-account-characteristics"
+)
 
 function set_short_mysql_variables {
 
@@ -94,6 +102,13 @@ function declare_create_user_options {
     create_user_options_OR=$( echo "--$create_user_options_OR" | sed 's/ /| --/g' )
 }
 
+function declare_grant_options {
+
+    grant_options="${grant_options_array[*]}"
+    grant_options="${grant_options// /:,}:"
+    grant_options_OR="${grant_options_array[*]}"
+    grant_options_OR=$( echo "--$grant_options_OR" | sed 's/ /| --/g' )
+}
 
 function get_variables {
 
@@ -101,10 +116,11 @@ function get_variables {
     declare_change_root_password_options
     declare_create_database_options
     declare_create_user_options
+    declare_grant_options
 
-    long_options_OR="$long_connection_options_OR | $change_root_password_options_OR | $create_database_options_OR | $create_user_options_OR"
+    long_options_OR="$long_connection_options_OR | $change_root_password_options_OR | $create_database_options_OR | $create_user_options_OR | $grant_options_OR"
 
-    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options,$create_database_options,$create_user_options" -n 'options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
+    OPTS=$(getopt -o "$connection_options" --long "$long_connection_options,$change_root_password_options,$create_database_options,$create_user_options,$grant_options" -n 'options' -- "$@" 2> "$LOCAL_ERROR_FILE" )
 
     getopt_status=$?
 
