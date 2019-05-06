@@ -34,7 +34,7 @@ function create_user {
 
     #test_connection creates $CONNECTION_STRING
 
-    create_user_message=$(mysql $CONNECTION_STRING -Bse  "CREATE USER '$MYSQL_NEW_USER'@'$MYSQL_NEW_USER_PASSWORD' IDENTIFIED BY '$MYSQL_NEW_USER_PASSWORD'" 2>&1)
+    create_user_message=$(mysql $CONNECTION_STRING -Bse  "CREATE USER '$MYSQL_NEW_USER'@'$MYSQL_NEW_USER_HOST' IDENTIFIED BY '$MYSQL_NEW_USER_PASSWORD';" 2>&1)
 
     create_user_status=$?
 
