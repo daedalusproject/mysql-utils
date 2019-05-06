@@ -136,7 +136,7 @@ testCreateDatabase() {
 }
 
 testCreateNewUser() {
-    start_script create_new_user --new-user="otheruser" --new-user-password="somepass" --new-user-host='localhost' -uroot -pletmein -P3306 --host="percona-server"
+    start_script create_user --new-user="otheruser" --new-user-password="somepass" --new-user-host='localhost' -uroot -pletmein -P3306 --host="percona-server"
     new_user_error=$?
 
     assertEquals "0" "$new_user_error"

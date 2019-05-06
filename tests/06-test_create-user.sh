@@ -7,7 +7,7 @@
 
 #        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
 #  ORGANIZATION: Daedalus Project
-#       CREATED: 04/05/2019 16:56
+#       CREATED: 06/05/2019 05:58
 #===============================================================================
 
 source lib/06-create-user.sh
@@ -62,7 +62,7 @@ EOF
     MYSQL_CONNECTION_RETRIES=12
     MYSQL_CONNECTION_TIMEOUT=100
 
-    $(check_new_user 2> $TMP_FOLDER/nonewuserdata_test)
+    $(check_user 2> $TMP_FOLDER/nonewuserdata_test)
     no_user_data_error=$?
 
     diff $TMP_FOLDER/nonewuserdata $TMP_FOLDER/nonewuserdata_test > /dev/null
@@ -85,7 +85,7 @@ testNewUserDataSet() {
     MYSQL_NEW_USER_PASSWORD="secretpassword"
     MYSQL_NEW_USER_HOST="%"
 
-    check_new_user
+    check_user
     new_user_error=$?
 
     assertEquals "0" "$new_user_error"
@@ -103,10 +103,10 @@ testCreateNewUser() {
     MYSQL_NEW_USER_PASSWORD="secretpassword"
     MYSQL_NEW_USER_HOST="%"
 
-    create_new_user
-    create_new_user_error=$?
+    create_user
+    create_user_error=$?
 
-    assertEquals "0" "$create_new_user_error"
+    assertEquals "0" "$create_user_error"
 
     check_user_exists=$(mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -Bse "select 1 from mysql.user WHERE User='$MYSQL_NEW_USER' AND Host='$MYSQL_NEW_USER_HOST';" 2> /dev/null | grep 1 > /dev/null)
     check_user_exists_error=$?
