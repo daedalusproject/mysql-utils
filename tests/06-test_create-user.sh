@@ -44,6 +44,7 @@ tearDown() {
 
     unset MYSQL_NEW_USER
     unset MYSQL_NEW_USER_PASSWORD
+    unset MYSQL_NEW_USER_HOST
 }
 
 testNoNewUserDataSet() {

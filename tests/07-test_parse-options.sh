@@ -41,6 +41,11 @@ tearDown() {
     unset MYSQL_NEW_ROOT_HOST
 
     unset MYSQL_DATABASE_NAME
+
+    unset MYSQL_NEW_USER
+    unset MYSQL_NEW_USER_PASSWORD
+    unset MYSQL_NEW_USER_HOST
+
 }
 
 testUnexistentAction() {
