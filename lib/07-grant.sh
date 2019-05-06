@@ -14,7 +14,7 @@ source lib/01-messages.sh
 source lib/03-test-connection.sh
 
 declare -A default_grant_options_hash=(
-["MYSQL_GRANT_PRIV_TYPE"]=""
+["MYSQL_GRANT_PRIV_TYPE"]="ALL PRIVILEGES"
 ["MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS"]=""
 ["MYSQL_GRANT_HOST"]="%"
 ["MYSQL_GRANT_TABLES"]="*"
@@ -25,9 +25,10 @@ function set_unset_default_grant_variables {
     for default_variable in "${!default_grant_options_hash[@]}"
     do
         if [[ -z ${!default_variable} ]]; then
-            eval "$default_variable=${default_grant_options_hash[$default_variable]}"
+            eval "$(printf "%q=%q" "$default_variable" "${default_grant_options_hash[$default_variable]}")"
         fi
     done
+
 }
 
 function check_grant {
