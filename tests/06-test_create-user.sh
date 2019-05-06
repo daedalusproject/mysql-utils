@@ -67,7 +67,7 @@ EOF
 
     diff $TMP_FOLDER/nonewuserdata $TMP_FOLDER/nonewuserdata_test > /dev/null
     error_message_diff=$?
-    assertEquals "1" "$no_user_data"
+    assertEquals "1" "$no_user_data_error"
     assertEquals "0" "$error_message_diff"
 }
 
@@ -110,7 +110,7 @@ testCreateNewUser() {
 
     check_user_exists=$(mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -Bse "select 1 from mysql.user WHERE User='$MYSQL_NEW_USER' AND Host='$MYSQL_NEW_USER_HOST';" 2> /dev/null | grep 1 > /dev/null)
     check_user_exists_error=$?
-    assertEquals "0" "$check_database_error"
+    assertEquals "0" "$check_user_exists_error"
 }
 
 #
