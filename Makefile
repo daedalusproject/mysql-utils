@@ -27,7 +27,7 @@ test:
 	@echo "- grant"
 	( $(TEST_DIR)/07-test_grant.sh* )
 	@echo "- parse options"
-	( $(TEST_DIR)/07-test_parse-options.sh* )
+	( $(TEST_DIR)/08-test_parse-options.sh* )
 
 
 
