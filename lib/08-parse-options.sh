@@ -16,6 +16,7 @@ source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
 source lib/05-create-database.sh
 source lib/06-create-user.sh
+source lib/07-grant.sh
 
 declare -a available_actions=(
 'change_root_password'
