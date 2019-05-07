@@ -148,14 +148,14 @@ testCreateNewUser() {
 }
 
 testGrant() {
-    start_script grant --grant-priv-type="'ALL PRIVILEGES'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    start_script grant --grant-priv-type="ALL\ PRIVILEGES" --grant-other-account-characteristics="WITH\ GRANT\ OPTION" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
     grant_error=$?
 
     assertEquals "0" "$grant_error"
 }
 
 testErroredGrant() {
-    grant_message=$(start_script grant --grant-priv-type="'NONSENSE'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server")
+    grant_message=$(start_script grant --grant-priv-type="'NONSENSE'" --grant-other-account-characteristics="WITH\ GRANT\ OPTION" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server")
     grant_error=$?
 
     assertEquals "1" "$grant_message"
