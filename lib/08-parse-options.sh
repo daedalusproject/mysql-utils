@@ -21,6 +21,7 @@ declare -a available_actions=(
 'change_root_password'
 'create_database'
 'create_user'
+'grant'
 )
 
 function check_action {
