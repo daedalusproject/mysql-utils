@@ -24,8 +24,10 @@ test:
 	( $(TEST_DIR)/05-test_create-database.sh* )
 	@echo "- create user"
 	( $(TEST_DIR)/06-test_create-user.sh* )
+	@echo "- grant"
+	( $(TEST_DIR)/07-test_grant.sh* )
 	@echo "- parse options"
-	( $(TEST_DIR)/07-test_parse-options.sh* )
+	( $(TEST_DIR)/08-test_parse-options.sh* )
 
 
 
