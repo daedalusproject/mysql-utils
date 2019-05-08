@@ -114,7 +114,7 @@ testErroredCreateDatabase() {
 
     cat << EOF > $TMP_FOLDER/erroreddatabase
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1396 (HY000) at line 1: Operation ALTER USER failed for 'root'@''
+ERROR 1007 (HY000) at line 1: Can't create database 'newdatabase'; database exists
 EOF
 
     errored_database=$(create_database 2> $TMP_FOLDER/erroreddatabase_test)
