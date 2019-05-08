@@ -148,7 +148,7 @@ testCreateNewUser() {
 }
 
 testGrant() {
-    start_script grant --grant-priv-type="'ALL\ PRIVILEGES'" --grant-other-account-characteristics="'WITH\ GRANT\ OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    start_script grant --grant-priv-type="'ALL PRIVILEGES'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
     grant_error=$?
 
     assertEquals "0" "$grant_error"
@@ -161,7 +161,7 @@ Error: mysql: [Warning] Using a password on the command line interface can be in
 ERROR 3619 (HY000) at line 1: Illegal privilege level specified for NONSENSE
 EOF
 
-    erroredgrant=$(start_script grant --grant-priv-type="'NONSENSE'" --grant-other-account-characteristics="'WITH\ GRANT\ OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server" 2> $TMP_FOLDER/erroredgrant_test)
+    erroredgrant=$(start_script grant --grant-priv-type="'NONSENSE'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server" 2> $TMP_FOLDER/erroredgrant_test)
     grant_error=$?
 
     diff $TMP_FOLDER/erroredgrant $TMP_FOLDER/erroredgrant_test > /dev/null
