@@ -44,3 +44,20 @@ declare -a grant_options_array=(
 "grant-other-account-characteristics"
 )
 
+declare -A default_connection_options_hash=(
+["MYSQL_HOST"]="localhost"
+["MYSQL_SOCKET"]="/var/run/mysqld/mysqld.sock"
+["MYSQL_CONNECTION_RETRIES"]=5
+["MYSQL_CONNECTION_TIMEOUT"]=10 # seconds
+)
+
+declare required_variables=(
+"MYSQL_USER"
+"MYSQL_PASSWORD"
+"MYSQL_HOST"
+#"MYSQL_PORT" - Not required
+"MYSQL_SOCKET"
+"MYSQL_CONNECTION_RETRIES"
+"MYSQL_CONNECTION_TIMEOUT"
+)
+
