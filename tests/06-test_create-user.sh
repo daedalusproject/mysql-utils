@@ -122,9 +122,9 @@ testErrorCreateNewUser() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
-    MYSQL_NEW_USER="     "
+    MYSQL_NEW_USER="testuser"
     MYSQL_NEW_USER_PASSWORD="secretpassword"
-    MYSQL_NEW_USER_HOST="                  "
+    MYSQL_NEW_USER_HOST="%"
 
     cat << EOF > $TMP_FOLDER/erroreduser
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
