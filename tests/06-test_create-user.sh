@@ -114,6 +114,35 @@ testCreateNewUser() {
     assertEquals "0" "$check_user_exists_error"
 }
 
+testErrorCreateNewUser() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="letmein"
+    MYSQL_HOST="percona-server"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+
+    MYSQL_NEW_USER="testuser"
+    MYSQL_NEW_USER_PASSWORD="secretpassword"
+    MYSQL_NEW_USER_HOST="                  "
+
+    cat << EOF > $TMP_FOLDER/erroreduser
+Error: mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1007 (HY000) at line 1: Can't create database 'newdatabase'; database exists
+EOF
+
+    errored_user=$(create_user 2> $TMP_FOLDER/erroreduser_test)
+    create_user_error=$?
+
+cat $TMP_FOLDER/erroreduser_test
+    diff $TMP_FOLDER/erroreduser $TMP_FOLDER/erroreduser_test > /dev/null
+    error_message_diff=$?
+
+    assertEquals "0" "$error_message_diff"
+    assertEquals "1" "$create_user_error"
+}
+
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2
