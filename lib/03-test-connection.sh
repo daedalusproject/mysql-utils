@@ -35,7 +35,7 @@ function set_unset_default_variables {
     for default_variable in "${!default_connection_options_hash[@]}"
     do
         if [[ -z ${!default_variable} ]]; then
-            eval "$(printf "%q=%q" "$default_variable" "{default_connection_options_hash[$default_variable]}")"
+            eval "$(printf "%q=%q" "$default_variable" "${default_connection_options_hash[$default_variable]}")"
         fi
     done
 }
