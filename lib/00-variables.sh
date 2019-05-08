@@ -68,3 +68,9 @@ declare -A default_grant_options_hash=(
 ["MYSQL_GRANT_TABLES"]="*"
 )
 
+declare -a available_actions=(
+'change_root_password'
+'create_database'
+'create_user'
+'grant'
+)
