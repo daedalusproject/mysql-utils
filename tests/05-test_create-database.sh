@@ -120,6 +120,8 @@ EOF
     errored_database=$(create_database 2> $TMP_FOLDER/erroreddatabase_test)
     database_error=$?
 
+cat $TMP_FOLDER/erroreddatabase_test
+
     diff $TMP_FOLDER/erroreddatabase $TMP_FOLDER/erroreddatabase_test > /dev/null
     error_message_diff=$?
 
