@@ -1,3 +1,9 @@
+daedalus-project-mysql-utils (0.4-1) RELEASED; urgency=medium
+
+  * New actions: create database, create user and grant
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 08 May 2019 20:09:00 +0200
+
 daedalus-project-mysql-utils (0.3-3) UNRELEASED; urgency=medium
 
   * New action: grant
