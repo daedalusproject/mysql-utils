@@ -59,7 +59,7 @@ function set_mysql_variables {
     variable_name=$( echo "MYSQL_$variable_name" | tr '[:lower:]' '[:upper:]' | tr '-' '_' )
     variable_value=$2
 
-    eval "$variable_name=$variable_value"
+    eval "$(printf "%q=%q" "$variable_name" "$variable_value")"
 }
 
 function declare_connection_variables {
