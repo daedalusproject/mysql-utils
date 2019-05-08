@@ -128,7 +128,7 @@ testErrorCreateNewUser() {
 
     cat << EOF > $TMP_FOLDER/erroreduser
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1007 (HY000) at line 1: Can't create database 'newdatabase'; database exists
+ERROR 1396 (HY000) at line 1: Operation CREATE USER failed for 'testuser'@'%'
 EOF
 
     errored_user=$(create_user 2> $TMP_FOLDER/erroreduser_test)
