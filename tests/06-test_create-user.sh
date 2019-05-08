@@ -122,7 +122,7 @@ testErrorCreateNewUser() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
-    MYSQL_NEW_USER="testuser"
+    MYSQL_NEW_USER="     "
     MYSQL_NEW_USER_PASSWORD="secretpassword"
     MYSQL_NEW_USER_HOST="                  "
 
@@ -135,6 +135,7 @@ EOF
     create_user_error=$?
 
 cat $TMP_FOLDER/erroreduser_test
+
     diff $TMP_FOLDER/erroreduser $TMP_FOLDER/erroreduser_test > /dev/null
     error_message_diff=$?
 
