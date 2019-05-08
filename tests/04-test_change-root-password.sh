@@ -160,7 +160,7 @@ testErrorChnageRootPassword() {
 
     cat << EOF > $TMP_FOLDER/erroredchangepassword
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 3619 (HY000) at line 1: Illegal privilege level specified for NONSENSE
+ERROR 1396 (HY000) at line 1: Operation ALTER USER failed for 'root'@''
 EOF
 
     errorchangepassword=$(change_root_password 2> $TMP_FOLDER/erroredchangepassword_test)
