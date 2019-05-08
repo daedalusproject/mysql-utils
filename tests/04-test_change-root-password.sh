@@ -136,7 +136,7 @@ testRestoreRootPassword() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
     MYSQL_NEW_ROOT_PASSWORD="letmein"
-    MYSQL_NEW_ROOT_HOST=""
+    MYSQL_NEW_ROOT_HOST="    "
 
     change_root_password
     restore_password_error=$?
