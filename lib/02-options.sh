@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 02-variables.sh
+#          FILE: 02-options.sh
 #
 #   DESCRIPTION: Manage variables
 

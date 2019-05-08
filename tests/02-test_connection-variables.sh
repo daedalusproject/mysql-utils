@@ -10,7 +10,7 @@
 #       CREATED: 01/05/2019 19:03
 #===============================================================================
 
-source lib/02-variables.sh
+source lib/02-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
