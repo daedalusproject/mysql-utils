@@ -130,13 +130,13 @@ testNewRootPasswordSuccess() {
 
 testRestoreRootPassword() {
     MYSQL_USER="root"
-    MYSQL_PASSWORD="letmein"
+    MYSQL_PASSWORD="newpass"
     MYSQL_HOST="percona-server"
     MYSQL_PORT=3306
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
     MYSQL_NEW_ROOT_PASSWORD="letmein"
-    MYSQL_NEW_ROOT_HOST="    "
+    MYSQL_NEW_ROOT_HOST="%"
 
     change_root_password
     restore_password_error=$?
@@ -145,6 +145,18 @@ testRestoreRootPassword() {
 }
 
 testErrorChnageRootPassword() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="letmein"
+    MYSQL_HOST="percona-server"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+    MYSQL_NEW_ROOT_PASSWORD="dontcare"
+    MYSQL_NEW_ROOT_HOST="        "
+
+    change_root_password
+    restore_password_error=$?
+
 
     cat << EOF > $TMP_FOLDER/erroredchangepassword
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
