@@ -61,3 +61,10 @@ declare required_variables=(
 "MYSQL_CONNECTION_TIMEOUT"
 )
 
+declare -A default_grant_options_hash=(
+["MYSQL_GRANT_PRIV_TYPE"]="ALL PRIVILEGES"
+["MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS"]=""
+["MYSQL_GRANT_HOST"]="%"
+["MYSQL_GRANT_TABLES"]="*"
+)
+
