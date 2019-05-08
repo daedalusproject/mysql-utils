@@ -154,10 +154,6 @@ testErrorChnageRootPassword() {
     MYSQL_NEW_ROOT_PASSWORD="dontcare"
     MYSQL_NEW_ROOT_HOST="        "
 
-    change_root_password
-    restore_password_error=$?
-
-
     cat << EOF > $TMP_FOLDER/erroredchangepassword
 Error: mysql: [Warning] Using a password on the command line interface can be insecure.
 ERROR 1396 (HY000) at line 1: Operation ALTER USER failed for 'root'@''
