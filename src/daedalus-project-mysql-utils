@@ -10,11 +10,14 @@
 #       CREATED: 05/05/2019 12:47
 #===============================================================================
 
+source lib/00-variables.sh
 source lib/01-messages.sh
-source lib/02-variables.sh
+source lib/02-options.sh
 source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
 source lib/05-create-database.sh
-source lib/06-parse-options.sh
+source lib/06-create-user.sh
+source lib/07-grant.sh
+source lib/08-parse-options.sh
 
 start_script "$@"
