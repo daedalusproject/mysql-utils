@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 02-variables.sh
+#          FILE: 02-options.sh
 #
 #   DESCRIPTION: Manage variables
 
@@ -10,41 +10,8 @@
 #       CREATED: 05/01/2019 19:05
 #===============================================================================
 
+source lib/00-variables.sh
 source lib/01-messages.sh
-
-declare -A connection_options_hash=(
-["u"]="user"
-["p"]="password"
-["h"]="host"
-["P"]="port"
-["S"]="socket"
-["r"]="connection-retries"
-["t"]="connection-timeout"
-)
-
-declare -a change_root_password_options_array=(
-"new-root-password"
-"new-root-host"
-)
-
-declare -a create_database_options_array=(
-"database-name"
-)
-
-declare -a create_user_options_array=(
-"new-user"
-"new-user-password"
-"new-user-host"
-)
-
-declare -a grant_options_array=(
-"grant-priv-type"
-"grant-user"
-"grant-database"
-"grant-host"
-"grant-tables"
-"grant-other-account-characteristics"
-)
 
 function set_short_mysql_variables {
 
@@ -59,7 +26,7 @@ function set_mysql_variables {
     variable_name=$( echo "MYSQL_$variable_name" | tr '[:lower:]' '[:upper:]' | tr '-' '_' )
     variable_value=$2
 
-    eval "$variable_name=$variable_value"
+    eval "$(printf "%q=%q" "$variable_name" "$variable_value")"
 }
 
 function declare_connection_variables {

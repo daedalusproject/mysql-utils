@@ -10,32 +10,16 @@
 #       CREATED: 03/05/2019 06:04
 #===============================================================================
 
+source lib/00-variables.sh
 source lib/01-messages.sh
-source lib/02-variables.sh
-
-declare -A default_connection_options_hash=(
-["MYSQL_HOST"]="localhost"
-["MYSQL_SOCKET"]="/var/run/mysqld/mysqld.sock"
-["MYSQL_CONNECTION_RETRIES"]=5
-["MYSQL_CONNECTION_TIMEOUT"]=10 # seconds
-)
-
-declare required_variables=(
-"MYSQL_USER"
-"MYSQL_PASSWORD"
-"MYSQL_HOST"
-#"MYSQL_PORT" - Not required
-"MYSQL_SOCKET"
-"MYSQL_CONNECTION_RETRIES"
-"MYSQL_CONNECTION_TIMEOUT"
-)
+source lib/02-options.sh
 
 function set_unset_default_variables {
 
     for default_variable in "${!default_connection_options_hash[@]}"
     do
         if [[ -z ${!default_variable} ]]; then
-            eval "$default_variable=${default_connection_options_hash[$default_variable]}"
+            eval "$(printf "%q=%q" "$default_variable" "${default_connection_options_hash[$default_variable]}")"
         fi
     done
 }

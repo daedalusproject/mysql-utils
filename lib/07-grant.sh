@@ -10,15 +10,9 @@
 #       CREATED: 06/05/2019 20:42
 #===============================================================================
 
+source lib/00-variables.sh
 source lib/01-messages.sh
 source lib/03-test-connection.sh
-
-declare -A default_grant_options_hash=(
-["MYSQL_GRANT_PRIV_TYPE"]="ALL PRIVILEGES"
-["MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS"]=""
-["MYSQL_GRANT_HOST"]="%"
-["MYSQL_GRANT_TABLES"]="*"
-)
 
 function set_unset_default_grant_variables {
 
