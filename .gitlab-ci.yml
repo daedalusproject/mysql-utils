@@ -32,6 +32,8 @@ unit_tests:
         - sudo apt-get install -y percona-server-client
     script:
         - make test
+    after_script:
+        - delete_configs
 
 deploy_databse_for_coverage:
     image: daedalusproject/base_kubectl:201905041029
@@ -53,6 +55,8 @@ cover:
         - sudo apt-get install -y percona-server-client
     script:
         - make cover
+    after_script:
+        - delete_configs
     coverage: /Coverage:\ (\d+\.\d+?)%$/
     artifacts:
         paths:
