@@ -186,6 +186,13 @@ testLaunchRestoreRootPassword() {
     assertEquals "0" "$restore_password_error"
 }
 
+testUsage() {
+    start_script usage > /dev/null
+    usage_error=$?
+
+    assertEquals "0" "$usage_error"
+}
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2
