@@ -12,7 +12,6 @@
 
 function usage {
 
-function usage {
 $CAT << EOF
 
 Daedalus Poject's mysql-utils
