@@ -33,6 +33,7 @@ unit_tests:
     script:
         - make test
     after_script:
+        - source utils/create_environment.sh
         - delete_configs
 
 deploy_databse_for_coverage:
@@ -56,6 +57,7 @@ cover:
     script:
         - make cover
     after_script:
+        - source utils/create_environment.sh
         - delete_configs
     coverage: /Coverage:\ (\d+\.\d+?)%$/
     artifacts:

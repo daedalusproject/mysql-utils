@@ -22,6 +22,7 @@ function set_short_mysql_variables {
 }
 
 function set_mysql_variables {
+
     variable_name=${1//--/}
     variable_name=$( echo "MYSQL_$variable_name" | tr '[:lower:]' '[:upper:]' | tr '-' '_' )
     variable_value=$2

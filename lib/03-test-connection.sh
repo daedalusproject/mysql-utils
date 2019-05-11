@@ -25,6 +25,7 @@ function set_unset_default_variables {
 }
 
 function check_connection_variables {
+
     set_unset_default_variables
 
     has_errors=0

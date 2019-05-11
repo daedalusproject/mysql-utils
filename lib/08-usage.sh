@@ -103,4 +103,5 @@ Arguments:
     --grant-other-account-characteristics=OTHER Extra characteristics
                                                 Set MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS
 EOF
+
 }

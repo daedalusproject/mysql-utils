@@ -21,6 +21,7 @@ source lib/07-grant.sh
 source lib/08-usage.sh
 
 function check_action {
+
     action=$1
     if [[ " ${available_actions[*]} " != *"$action"* ]]; then
         report_error "$action is not a valid action."

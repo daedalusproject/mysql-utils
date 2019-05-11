@@ -14,6 +14,7 @@ source lib/01-messages.sh
 source lib/03-test-connection.sh
 
 function check_database_name {
+
     has_errors=0
     if [[ -z $MYSQL_DATABASE_NAME ]]; then
         report_error "MYSQL_DATABASE_NAME is required."
