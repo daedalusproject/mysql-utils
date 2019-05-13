@@ -1,3 +1,53 @@
+daedalus-project-mysql-utils (0.4-5) RELEASED; urgency=medium
+
+  * Main script was incomplete
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 13 May 2019 20:20:00 +0200
+
+daedalus-project-mysql-utils (0.4-4) UNRELEASED; urgency=medium
+
+  * Main script was incomplete
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 13 May 2019 20:20:00 +0200
+
+daedalus-project-mysql-utils (0.4-3) UNRELEASED; urgency=medium
+
+  * Main script was incomplete
+  * New actions: usage
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 13 May 2019 07:37:00 +0200
+
+daedalus-project-mysql-utils (0.4-2) UNRELEASED; urgency=medium
+
+  * Main script was incomplete
+  * New actions: create database, create user and grant
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 09 May 2019 18:17:00 +0200
+
+daedalus-project-mysql-utils (0.4-1) UNRELEASED; urgency=medium
+
+  * New actions: create database, create user and grant
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 08 May 2019 20:09:00 +0200
+
+daedalus-project-mysql-utils (0.3-3) UNRELEASED; urgency=medium
+
+  * New action: grant
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 07 May 2019 06:32:00 +0200
+
+daedalus-project-mysql-utils (0.3-2) UNRELEASED; urgency=medium
+
+  * New action: create user
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 06 May 2019 17:25:00 +0200
+
+daedalus-project-mysql-utils (0.3-1) UNRELEASED; urgency=medium
+
+  * New action: create database
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 05 May 2019 22:02:00 +0200
+
 daedalus-project-mysql-utils (0.2-1) RELEASED; urgency=medium
 
   * First release

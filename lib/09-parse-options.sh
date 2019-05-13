@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-parse-options.sh
+#          FILE: 08-parse-options.sh
 #
 #   DESCRIPTION: Parses actions and tuns them
 
@@ -10,16 +10,18 @@
 #       CREATED: 04/05/2019 17:44
 #===============================================================================
 
+source lib/00-variables.sh
 source lib/01-messages.sh
-source lib/02-variables.sh
+source lib/02-options.sh
 source lib/03-test-connection.sh
 source lib/04-change-root-password.sh
-
-declare -a available_actions=(
-'change_root_password'
-)
+source lib/05-create-database.sh
+source lib/06-create-user.sh
+source lib/07-grant.sh
+source lib/08-usage.sh
 
 function check_action {
+
     action=$1
     if [[ " ${available_actions[*]} " != *"$action"* ]]; then
         report_error "$action is not a valid action."
@@ -41,5 +43,4 @@ function start_script {
     #Launch action
     get_variables "${@:1}"
     ${MYSQL_UTILS_ACTION}
-
 }

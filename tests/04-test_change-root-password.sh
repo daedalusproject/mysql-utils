@@ -144,6 +144,31 @@ testRestoreRootPassword() {
     assertEquals "0" "$restore_password_error"
 }
 
+testErrorChnageRootPassword() {
+    MYSQL_USER="root"
+    MYSQL_PASSWORD="letmein"
+    MYSQL_HOST="percona-server"
+    MYSQL_PORT=3306
+    MYSQL_CONNECTION_RETRIES=5
+    MYSQL_CONNECTION_TIMEOUT=1
+    MYSQL_NEW_ROOT_PASSWORD="dontcare"
+    MYSQL_NEW_ROOT_HOST="        "
+
+    cat << EOF > $TMP_FOLDER/erroredchangepassword
+Error: mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1396 (HY000) at line 1: Operation ALTER USER failed for 'root'@''
+EOF
+
+    errorchangepassword=$(change_root_password 2> $TMP_FOLDER/erroredchangepassword_test)
+    change_root_password_error=$?
+
+    diff $TMP_FOLDER/erroredchangepassword $TMP_FOLDER/erroredchangepassword_test > /dev/null
+    error_message_diff=$?
+
+    assertEquals "0" "$error_message_diff"
+    assertEquals "1" "$change_root_password_error"
+}
+
 #
 # Load shUnit2.
 . /usr/bin/shunit2

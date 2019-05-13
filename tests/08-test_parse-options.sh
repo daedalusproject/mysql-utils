@@ -1,7 +1,7 @@
 #!/bin/bash -
 #===============================================================================
 #
-#          FILE: 05-test_parse-options.sh
+#          FILE: 08-test_parse-options.sh
 #
 #   DESCRIPTION: Test options parsing
 
@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/05-parse-options.sh
+source lib/09-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -39,6 +39,13 @@ tearDown() {
 
     unset MYSQL_NEW_ROOT_PASSWORD
     unset MYSQL_NEW_ROOT_HOST
+
+    unset MYSQL_DATABASE_NAME
+
+    unset MYSQL_NEW_USER
+    unset MYSQL_NEW_USER_PASSWORD
+    unset MYSQL_NEW_USER_HOST
+
 }
 
 testUnexistentAction() {
@@ -126,6 +133,45 @@ EOF
     assertEquals "1" "$error_code"
 }
 
+testCreateDatabase() {
+    start_script create_database --database-name="otherdatabase" -uroot -pletmein -P3306 --host="percona-server"
+    new_database_error=$?
+
+    assertEquals "0" "$new_database_error"
+}
+
+testCreateNewUser() {
+    start_script create_user --new-user="otheruser" --new-user-password="somepass" --new-user-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    new_user_error=$?
+
+    assertEquals "0" "$new_user_error"
+}
+
+testGrant() {
+    start_script grant --grant-priv-type="'ALL PRIVILEGES'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server"
+    grant_error=$?
+
+    assertEquals "0" "$grant_error"
+}
+
+testErroredGrant() {
+
+    cat << EOF > $TMP_FOLDER/erroredgrant
+Error: mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 3619 (HY000) at line 1: Illegal privilege level specified for NONSENSE
+EOF
+
+    erroredgrant=$(start_script grant --grant-priv-type="'NONSENSE'" --grant-other-account-characteristics="'WITH GRANT OPTION'" --grant-user="otheruser" --grant-database="otherdatabase" --grant-host="localhost" -uroot -pletmein -P3306 --host="percona-server" 2> $TMP_FOLDER/erroredgrant_test)
+    grant_error=$?
+
+    diff $TMP_FOLDER/erroredgrant $TMP_FOLDER/erroredgrant_test > /dev/null
+    error_message_diff=$?
+
+    assertEquals "0" "$error_message_diff"
+    assertEquals "1" "$grant_error"
+}
+
+
 testLaunchChangeRootPassword() {
     start_script change_root_password --new-root-password="newpass" --new-root-host="%" -uroot -pletmein -P3306 --host="percona-server"
     new_password_error=$?
@@ -138,6 +184,13 @@ testLaunchRestoreRootPassword() {
     restore_password_error=$?
 
     assertEquals "0" "$restore_password_error"
+}
+
+testUsage() {
+    start_script usage > /dev/null
+    usage_error=$?
+
+    assertEquals "0" "$usage_error"
 }
 
 #
