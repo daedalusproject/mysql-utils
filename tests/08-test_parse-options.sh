@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/08-parse-options.sh
+source lib/09-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
