@@ -73,4 +73,5 @@ declare -a available_actions=(
 'create_database'
 'create_user'
 'grant'
+'usage'
 )
