@@ -19,3 +19,7 @@ The following namespace will be created:
 
 * mysql-test
 
+Gitlab Runner has to be configured too:
+```
+helm install --namespace mysql-test --name gitlab-runner-mysql-test -f values.yaml gitlab/gitlab-runner
+```
