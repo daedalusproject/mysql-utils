@@ -18,6 +18,7 @@ source lib/04-change-root-password.sh
 source lib/05-create-database.sh
 source lib/06-create-user.sh
 source lib/07-grant.sh
-source lib/08-parse-options.sh
+source lib/08-usage.sh
+source lib/09-parse-options.sh
 
 start_script "$@"
