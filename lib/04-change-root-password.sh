@@ -14,6 +14,7 @@ source lib/01-messages.sh
 source lib/03-test-connection.sh
 
 function check_new_root_password {
+
     has_errors=0
     for required_variable in 'MYSQL_NEW_ROOT_PASSWORD' 'MYSQL_NEW_ROOT_HOST'
     do

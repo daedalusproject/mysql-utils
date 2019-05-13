@@ -18,8 +18,10 @@ source lib/04-change-root-password.sh
 source lib/05-create-database.sh
 source lib/06-create-user.sh
 source lib/07-grant.sh
+source lib/08-usage.sh
 
 function check_action {
+
     action=$1
     if [[ " ${available_actions[*]} " != *"$action"* ]]; then
         report_error "$action is not a valid action."

@@ -26,6 +26,7 @@ function set_unset_default_grant_variables {
 }
 
 function check_grant {
+
     set_unset_default_grant_variables
     has_errors=0
     for required_variable in 'MYSQL_GRANT_USER' 'MYSQL_GRANT_DATABASE'

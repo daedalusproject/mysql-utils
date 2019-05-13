@@ -1,12 +1,23 @@
-# Daedalus Poject's mysql-utils
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: 08-usage.sh
+#
+#   DESCRIPTION: Shows usage
+
+#        AUTHOR: Álvaro Castellano Vela (alvaro.castellano.vela@gmail.com)
+#  ORGANIZATION: Daedalus Project
+#       CREATED: 10/05/2019 06:19
+#===============================================================================
+
+function usage {
+
+$CAT << EOF
+
+Daedalus Poject's mysql-utils
 
 The purpose of this is is avoid hardcodidng mysql commands inside Docker startup scripts.
 
-[![pipeline status](https://git.daedalus-project.io/tools-and-utils/mysql-utils/badges/master/pipeline.svg)](https://git.daedalus-project.io/tools-and-utils/mysql-utils/commits/master)[![coverage report](https://git.daedalus-project.io/tools-and-utils/mysql-utils/badges/master/coverage.svg)](https://git.daedalus-project.io/tools-and-utils/mysql-utils/commits/master)
-
-## Usage
-
-```
 Usage: daedalus-project-mysql-utils ACTION [ARGUMENTS]
 
 When argumments are set and upercase like variables are set.
@@ -91,4 +102,6 @@ Arguments:
 
     --grant-other-account-characteristics=OTHER Extra characteristics
                                                 Set MYSQL_GRANT_OTHER_ACCOUNT_CHARACTERISTICS
-```
+EOF
+
+}

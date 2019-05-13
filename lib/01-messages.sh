@@ -23,6 +23,7 @@ function debug {
 
 
 function report_error {
+
     error_message="Error: $*"
     echo "$error_message" 1>&2
 }

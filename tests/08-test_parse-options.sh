@@ -10,7 +10,7 @@
 #       CREATED: 04/05/2019 16:56
 #===============================================================================
 
-source lib/08-parse-options.sh
+source lib/09-parse-options.sh
 
 oneTimeSetUp() {
     export TMP_FOLDER="/var/tmp/daedalus-project-mysql-utils/tests"
@@ -184,6 +184,13 @@ testLaunchRestoreRootPassword() {
     restore_password_error=$?
 
     assertEquals "0" "$restore_password_error"
+}
+
+testUsage() {
+    start_script usage > /dev/null
+    usage_error=$?
+
+    assertEquals "0" "$usage_error"
 }
 
 #

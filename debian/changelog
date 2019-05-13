@@ -1,9 +1,9 @@
 daedalus-project-mysql-utils (0.4-2) RELEASED; urgency=medium
 
   * Main script was incomplete
-  * New actions: create database, create user and grant
+  * New actions: usage
 
- -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Wed, 09 May 2019 18:17:00 +0200
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 13 May 2019 07:37:00 +0200
 
 daedalus-project-mysql-utils (0.4-1) RELEASED; urgency=medium
 
