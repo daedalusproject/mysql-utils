@@ -134,8 +134,6 @@ EOF
     errored_user=$(create_user 2> $TMP_FOLDER/erroreduser_test)
     create_user_error=$?
 
-cat $TMP_FOLDER/erroreduser_test
-
     diff $TMP_FOLDER/erroreduser $TMP_FOLDER/erroreduser_test > /dev/null
     error_message_diff=$?
 
