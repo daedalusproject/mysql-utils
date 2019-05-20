@@ -1,3 +1,9 @@
+daedalus-project-mysql-utils (0.4-6) RELEASED; urgency=medium
+
+  * Use mysql_native_password
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 20 May 2019 18:31:00 +0200
+
 daedalus-project-mysql-utils (0.4-5) RELEASED; urgency=medium
 
   * Main script was incomplete
