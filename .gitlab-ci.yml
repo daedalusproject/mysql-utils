@@ -4,6 +4,7 @@ stages:
     - test
     - set_coverage_environment
     - coverage
+    - clean
     - package
     - update_repo
 
@@ -44,7 +45,6 @@ deploy_databse_for_coverage:
         - delete_configs
         - create_configs
 
-
 cover:
     image: daedalusproject/base_bash_utils:201905041029
     stage: coverage
@@ -58,6 +58,16 @@ cover:
         paths:
         - coverage
         expire_in: 15 minutes
+
+clean_namespace:
+    image: daedalusproject/base_kubectl:201905041029
+    stage: clean
+    script:
+        - declare -a -g REQUIRED_VARIABLES
+        - REQUIRED_VARIABLES=( 'KUBERNETES_URL' 'KUBERNETES_USER_NAME' 'KUBERNETES_USER_TOKEN')
+        - source utils/create_environment.sh
+        - create_kube_config
+        - delete_configs
 
 create_deb_package:
     image: daedalusproject/base_deb_builder:201905041029
