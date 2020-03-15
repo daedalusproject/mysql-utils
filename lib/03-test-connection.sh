@@ -54,11 +54,10 @@ function test_connection {
         CONNECTION_STRING="$CONNECTION_STRING -S $MYSQL_SOCKET"
     fi
 
-    echo $CONNECTION_STRING
     connection_error=1
     for retry  in $(seq 1 "$MYSQL_CONNECTION_RETRIES")
     do
-        mysql $CONNECTION_STRING -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
+        mysql "${CONNECTION_STRING}" -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
         sleep "$MYSQL_CONNECTION_TIMEOUT"
     done
 
