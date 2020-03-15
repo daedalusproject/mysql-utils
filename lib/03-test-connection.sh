@@ -47,11 +47,11 @@ function test_connection {
 
     check_connection_variables
 
-    CONNECTION_STRING="-u$MYSQL_USER -p$MYSQL_PASSWORD"
-    if [[ "$MYSQL_PORT" != "" ]]; then
-        CONNECTION_STRING="$CONNECTION_STRING -h $MYSQL_HOST -P $MYSQL_PORT"
+    CONNECTION_STRING="-u${MYSQL_USER} -p${MYSQL_PASSWORD}"
+    if [ "x${MYSQL_PORT}" = "x" ]; then
+        CONNECTION_STRING="${CONNECTION_STRING} -S ${MYSQL_SOCKET}"
     else
-        CONNECTION_STRING="$CONNECTION_STRING -S $MYSQL_SOCKET"
+        CONNECTION_STRING="${CONNECTION_STRING} -h ${MYSQL_HOST} --port ${MYSQL_PORT}"
     fi
 
     connection_error=1
