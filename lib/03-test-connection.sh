@@ -54,6 +54,7 @@ function test_connection {
         CONNECTION_STRING="$CONNECTION_STRING -S $MYSQL_SOCKET"
     fi
 
+    echo $CONNECTION_STRING
     connection_error=1
     for retry  in $(seq 1 "$MYSQL_CONNECTION_RETRIES")
     do
