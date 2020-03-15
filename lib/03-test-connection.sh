@@ -51,7 +51,7 @@ function test_connection {
     if [ "x${MYSQL_PORT}" = "x" ]; then
         CONNECTION_STRING="${CONNECTION_STRING} -S ${MYSQL_SOCKET}"
     else
-        CONNECTION_STRING="${CONNECTION_STRING} -h ${MYSQL_HOST} --port ${MYSQL_PORT}"
+        CONNECTION_STRING="${CONNECTION_STRING} -h ${MYSQL_HOST} --protocol=tcp --port=${MYSQL_PORT}"
     fi
 
     connection_error=1
