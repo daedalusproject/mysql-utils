@@ -59,7 +59,7 @@ function test_connection {
     do
         echo "/usr/bin/mysql ${CONNECTION_STRING} -Bse 'SELECT 1'"
         /usr/bin/mysql "${CONNECTION_STRING}" -Bse 'SELECT 1'
-        /usr/bin/mysql "${CONNECTION_STRING}" -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
+        #/usr/bin/mysql "${CONNECTION_STRING}" -Bse 'SELECT 1' 2> /dev/null > /dev/null && connection_error=0 && break
         sleep "$MYSQL_CONNECTION_TIMEOUT"
     done
 
