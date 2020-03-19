@@ -26,14 +26,15 @@ deploy_databse:
         - create_configs
 
 unit_tests:
-    image: ubuntu
+    image: daedalusproject/base_bash_utils:latest
     stage: test
     before_script:
-        - cat /etc/resolv.conf
         - sudo apt-get update
         - sudo apt-get install -y percona-server-client
     script:
         - make test
+    tags:
+        - kubernetes
 
 deploy_databse_for_coverage:
     image: daedalusproject/base_kubectl:201905041029
@@ -59,7 +60,8 @@ cover:
         paths:
         - coverage
         expire_in: 15 minutes
-
+    tags:
+        - kubernetes
 clean_namespace:
     image: daedalusproject/base_kubectl:201905041029
     stage: clean
