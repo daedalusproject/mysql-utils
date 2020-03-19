@@ -108,7 +108,7 @@ testOldRootPasswordFails() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
-    test_connection 2> /dev/null
+    $(test_connection 2> /dev/null)
     failed_connection=$?
 
     assertEquals "1" "$failed_connection"
@@ -122,7 +122,7 @@ testNewRootPasswordSuccess() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
-    test_connection 2> /dev/null
+    $(test_connection 2> /dev/null)
     succeeded_connection=$?
 
     assertEquals "0" "$succeeded_connection"
