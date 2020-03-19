@@ -171,7 +171,7 @@ testTestConnectionSuccess() {
     MYSQL_CONNECTION_RETRIES=5
     MYSQL_CONNECTION_TIMEOUT=1
 
-    test_connection 
+    test_connection 2> /dev/null
     failed_connection=$?
 
     assertEquals "0" "$failed_connection"
