@@ -29,10 +29,10 @@ unit_tests:
     image: ubuntu
     stage: test
     before_script:
+        - cat /etc/resolv.conf
         - sudo apt-get update
         - sudo apt-get install -y percona-server-client
     script:
-        - cat /etc/resolv.conf
         - make test
 
 deploy_databse_for_coverage:
