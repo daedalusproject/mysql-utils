@@ -32,6 +32,7 @@ unit_tests:
         - sudo apt-get update
         - sudo apt-get install -y percona-server-client
     script:
+        - cat /etc/resolv.conf
         - make test
 
 deploy_databse_for_coverage:
