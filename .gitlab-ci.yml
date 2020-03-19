@@ -26,7 +26,7 @@ deploy_databse:
         - create_configs
 
 unit_tests:
-    image: daedalusproject/base_bash_utils:latest
+    image: ubuntu
     stage: test
     before_script:
         - sudo apt-get update
