@@ -1,3 +1,10 @@
+daedalus-project-mysql-utils (0.4-7) RELEASED; urgency=medium
+
+  * Update coverage
+
+ -- Álvaro Castellano Vela <alvaro.castellano.vela@gmail.com>  Mon, 20 Feb 2020 19:45:00 +0100
+
+
 daedalus-project-mysql-utils (0.4-6) RELEASED; urgency=medium
 
   * Use mysql_native_password

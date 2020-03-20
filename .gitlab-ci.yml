@@ -99,8 +99,8 @@ upload_package_to_develop_repo:
         expire_in: 5 minutes
     dependencies:
     - create_deb_package
-    only:
-    - develop
+      #    only:
+      #- develop
 
 upload_package_to_repo:
     stage: update_repo
