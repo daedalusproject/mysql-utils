@@ -1,0 +1,36 @@
+imagePullPolicy: IfNotPresent
+
+gitlabUrl: https://git.daedalus-project.io/
+
+runnerRegistrationToken: ""
+
+unregisterRunners: true
+
+concurrent: 1
+
+checkInterval: 30
+
+rbac:
+  create: true
+
+  clusterWideAccess: true
+
+metrics:
+  enabled: true
+
+runners:
+  image: ubuntu:bionic
+  tags: "kubernetes"
+  privileged: true
+  cache: {}
+  builds: {}
+  services: {}
+  helpers: {}
+  extra_hosts: ["git.daedalus-project.io:PRIVATE_IP"]
+
+resources: {}
+affinity: {}
+nodeSelector: {}
+tolerations: []
+hostAliases: []
+podAnnotations: {}
